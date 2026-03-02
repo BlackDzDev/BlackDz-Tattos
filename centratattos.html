@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlackDz Tattos</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    background-image: radial-gradient(circle at top, #2b1810 0%, #121212 100%);
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://comandogeek.com.br/blog/wp-content/uploads/2025/01/Design-sem-nome-2025-01-21T133034.785-1-1024x536.png');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 4px solid #ff0800;
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ff0000;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #ff0800;
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.2);
+}
+
+.img-container {
+    height: 220px;
+    background-color: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+}
+
+.img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.info h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+    color: #ff0000;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.btn-copy {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #ff0000, #e60000);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: filter 0.2s, transform 0.1s;
+    margin-bottom: 15px;
+}
+
+.btn-copy:hover {
+    filter: brightness(1.2);
+}
+
+.btn-copy:active {
+    transform: scale(0.98);
+}
+
+.variants-title {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.variants-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.variant-btn {
+    flex: 1 1 calc(50% - 4px);
+    background-color: #2a2a2a;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 8px 5px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.variant-btn:hover, .variant-btn.active {
+    background-color: #ff1e00;
+    color: white;
+    border-color: #ff0000;
+}
+
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff0000;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5);
+}
+
+#toast.show {
+    opacity: 1;
+    transform: translate(-50%, -10px);
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>BlackDz Tattos</h1>
+    <p>Quer que seja adicionado mais tattos? Ou uma tatto que voce fez? Chama no Discord: .black.dz.</p>
+</header>
+
+<div class="container">
+    <div class="grid" id="tattoosGrid"></div>
+</div>
+
+<div id="toast">Link Copiado.</div>
+
+<script>
+
+const db = [
+    { 
+        name: "Angel", 
+        variants: [
+            { name: "Branca (Padrão)", link: "https://i.postimg.cc/YShTjvD2/ANJO-BRANCA.png" },
+            { name: "Amarela", link: "https://i.postimg.cc/CKz9dRrS/ANJO-AMARELA.png" },
+            { name: "Azul Claro", link: "https://i.postimg.cc/JhGStsYR/ANJO-AZUL-CLARO.png" },
+            { name: "Azul Escuro", link: "https://i.postimg.cc/nLCNMXSF/ANJO-AZUL-ESCURO.png" },
+            { name: "Roxa", link: "https://i.postimg.cc/LsnGhJQ6/ANJO-ROXO.png" },
+            { name: "Vermelha", link: "https://i.postimg.cc/zfV43y2G/ANJO-VERMELHA.png" }
+        ]
+    },
+    { 
+        name: "Fúria", 
+        variants: [
+            { name: "Preta", link: "https://i.postimg.cc/W4CCZsxH/Furia-Preta.png" },
+            { name: "Vermelha", link: "https://i.postimg.cc/gJh5qfPH/Furia-vermelha.png" },
+            { name: "Vermelha + God", link: "https://i.postimg.cc/RFt8QjzQ/FURIA-VERMELHA-GOD.png" },
+            { name: "Azul + God", link: "https://i.postimg.cc/nLggmnNw/FURIA-AZUL-GOD.png" }
+        ]
+    },
+    { 
+        name: "God", 
+        variants: [
+            { name: "Branco Divino", link: "https://i.postimg.cc/vmkknGCD/DEUS-BRANCO.png" },
+            { name: "Padrão 1", link: "https://i.postimg.cc/vmcCD426/DEUS-1.png" },
+            { name: "Padrão 2", link: "https://i.postimg.cc/JhGStsYk/Deus-2.png" },
+            { name: "Amarelo", link: "https://i.postimg.cc/1z22Fyb3/DEUS-AMARELO.png" },
+            { name: "Azul Claro", link: "https://i.postimg.cc/0NFFS9hN/DEUS-AZUL-CLARO.png" },
+            { name: "Azul Escuro", link: "https://i.postimg.cc/DzHHG7RZ/DEUS-AZUL-ESCURO.png" },
+            { name: "Verde", link: "https://i.postimg.cc/43qqcXjK/DEUS-VERDE.png" },
+            { name: "Vermelho", link: "https://i.postimg.cc/DzHHG7R4/DEUS-VERMELHO.png" },
+            { name: "Roxo", link: "https://i.postimg.cc/vmkknGCg/DEUS-ROXO.png" },
+            { name: "Roxo Brilhante", link: "https://i.postimg.cc/xdhhm9BX/DEUS-ROXO-BRIHANTE.png" }
+        ]
+    },
+    { 
+        name: "Infinito", 
+        variants: [
+            { name: "Branco Puro", link: "https://i.postimg.cc/gJh5qfPS/INFINITO-BRANCO.png" },
+            { name: "Preto", link: "https://i.postimg.cc/1tFTcLZj/INFINITO-PRETO.png" },
+            { name: "Azul", link: "https://i.postimg.cc/gJh5qfPM/INFINITO-AZUL.png" },
+            { name: "Azul Escuro", link: "https://i.postimg.cc/85v3BqVt/INFINITO-AZUL-ESCURO.png" },
+            { name: "Vermelho", link: "https://i.postimg.cc/gJh5qfWb/INFINITO-VERMELHO.png" },
+            { name: "Roxo", link: "https://i.postimg.cc/LXP7BrMG/INFINITO-ROXO.png" },
+            { name: "Roxo Hyper", link: "https://i.postimg.cc/wvNPcSdZ/INFINITO-ROXO-HYPER.png" },
+            { name: "Bugado Roxa", link: "https://i.postimg.cc/3RG6CPHB/Infinit-Bug-roxa.png" }
+        ]
+    },
+    { 
+        name: "Infinito Com Olhos", 
+        variants: [
+            { name: "Preto c/ Vermelho", link: "https://i.postimg.cc/ZRNgF1hs/INFINITO-PRETO-COM-OLHO-PRETO-E-VERMELHO.png" },
+            { name: "Vermelho c/ Preto", link: "https://i.postimg.cc/LXP7BrpK/INFINITO-VERMELHO-COM-OLHO-VERMELHO-E-PRETO.png" },
+            { name: "Vermelho Alt", link: "https://i.postimg.cc/sXW89trF/INFINITO-VERMELHO-COM-OLHO-VERMELHO-E-PRETO-Copia.png" },
+            { name: "Roxo c/ Preto", link: "https://i.postimg.cc/Qt7PkRrz/INFINITO-ROXO-COM-OLHO-PRETO-E-VERMELHO.png" },
+            { name: "Roxo c/ Vermelho", link: "https://i.postimg.cc/xCm7yWS7/INFINITO-ROXO-COM-OLHO-ROXO-E-VERMELHO.png" }
+        ]
+    },
+    { 
+        name: "Majin", 
+        variants: [
+            { name: "Marca Majin", link: "https://i.postimg.cc/KjyW9JGj/marca-majin.png" },
+            { name: "Majin Anjo", link: "https://i.postimg.cc/50zGqZVV/majin-anjo-4.png" }
+        ]
+    },
+    { 
+        name: "Makai", 
+        variants: [
+            { name: "Makai", link: "https://i.postimg.cc/vTdKP3QJ/makai.png" },
+            { name: "Makai 2.0", link: "https://i.postimg.cc/DZGDdtT2/makai-2-0.png" },
+            { name: "Supremo", link: "https://i.postimg.cc/ydR5XwH1/makai-supremo.png" },
+            { name: "Supremo 2", link: "https://i.postimg.cc/pTj7YgHV/makai-supremo-2.png" }
+        ]
+    },
+    { 
+        name: "Baby", 
+        variants: [
+            { name: "Baby Forma 1", link: "https://i.postimg.cc/gjP7MNz9/MARCA-BABY-1.png" },
+            { name: "Baby Forma 2", link: "https://i.postimg.cc/cCNzDXxy/MARCA-BABY-2.png" }
+        ]
+    },
+    { 
+        name: "Hakaishin", 
+        variants: [
+            { name: "Branca", link: "https://i.postimg.cc/4yT08BfX/MARCA-BILLS-BRANCA.png" },
+            { name: "Preta", link: "https://i.postimg.cc/6qNPHYWW/MARCA-BILLS-PRETA.png" },
+            { name: "Azul Claro", link: "https://i.postimg.cc/zv1Qd0zY/MARCA-BILLS-AZUL-CLARO.png" },
+            { name: "Azul Escuro", link: "https://i.postimg.cc/D0KNCBvn/MARCA-BILLS-AZUL-ESCURO.png" },
+            { name: "Roxo", link: "https://i.postimg.cc/yxzGfv18/MARCA-BILLS-ROXO.png" },
+            { name: "Símbolo Hakai", link: "https://i.postimg.cc/nrtWd0FH/MARCA-BILLS-HAKAI.png" },
+            { name: "Traje / Roupa Bills", link: "https://i.postimg.cc/wBybgS3v/HAKAISHIN-BILLS.png" }
+        ]
+    },
+    { 
+        name: "Marca X", 
+        variants: [
+            { name: "Vermelha", link: "https://i.postimg.cc/nrtWd0F9/MARCA-X-VERMELHA.png" },
+            { name: "Azul", link: "https://i.postimg.cc/WzPy9XNF/MARCA-X-AZUL.png" },
+            { name: "Amarela", link: "https://i.postimg.cc/WzPy9XNd/MARCA-X-AMARELA.png" },
+            { name: "Na Testa", link: "https://i.postimg.cc/mD9qN0Gv/Infinito-testa.png" }
+        ]
+    },
+    { 
+        name: "Namekuseijin", 
+        variants: [
+            { name: "Branco", link: "https://i.postimg.cc/kGdHjfJW/NAMEK-BRANCO.png" },
+            { name: "Preto", link: "https://i.postimg.cc/rsLHhQV1/NAMEK-PRETO.png" },
+            { name: "Azul Claro", link: "https://i.postimg.cc/brj563yk/NAMEK-AZUL-CLARO.png" },
+            { name: "God 1", link: "https://i.postimg.cc/KYksxd48/namekgod1.png" },
+            { name: "God 2", link: "https://i.postimg.cc/CKB6SWd5/namekgod2.png" }
+        ]
+    },
+    { 
+        name: "Primal God", 
+        variants: [
+            { name: "Primal God 2.0", link: "https://i.postimg.cc/fbtgD6kV/primal.png" },
+            { name: "Black", link: "https://i.postimg.cc/QCkyv1Cm/PRIMAL-BLACK.png" },
+            { name: "Azul Escuro", link: "https://i.postimg.cc/6qLmFnq0/PRIMAL-AZUL-ESCURO.png" },
+            { name: "Red", link: "https://i.postimg.cc/x8y4BM8s/PRIMAL-RED.png" },
+            { name: "Rosa", link: "https://i.postimg.cc/FzgBw3zW/PRIMAL-ROSA.png" },
+            { name: "Verde", link: "https://i.postimg.cc/rsCP7xsZ/PRIMAL-VERDE.png" }
+        ]
+    },
+    { 
+        name: "Omni God", 
+        variants: [
+            { name: "Black", link: "https://i.postimg.cc/VvBV2nvM/OMNI-GOD-PRETO.png" },
+            { name: "Red", link: "https://i.postimg.cc/BbcVRHbH/OMNI-GOD-RED.png" },
+            { name: "2 Black", link: "https://i.postimg.cc/L5BbGL5k/OMNIGOD-2-BLACK.png" },
+            { name: "2 Red", link: "https://i.postimg.cc/hvb5NTv1/OMNIGOD-2-RED.png" },
+            { name: "Evil", link: "https://i.postimg.cc/SK2tkwjj/omnigod-evil.png" }
+        ]
+    },
+    { 
+        name: "SSJ4 & Daima", 
+        variants: [
+            { name: "Daima Branco", link: "https://i.postimg.cc/mrz6B0hz/SSJ4DAIMA-BRANCO.png" },
+            { name: "Daima", link: "https://i.postimg.cc/wBybgS3m/ssj4daima.png" },
+            { name: "Daima 2", link: "https://i.postimg.cc/9fRNCvzr/SSJ4-DAIMA.png" },
+            { name: "Blue", link: "https://i.postimg.cc/9fRNCvz4/ssj4blue.png" },
+            { name: "Rose", link: "https://i.postimg.cc/MGMrqhXj/ssj4rose.png" }
+        ]
+    },
+        { 
+        name: "Rostos - Olhos", 
+        variants: [
+            { name: "Ssj Blue", link: "https://i.postimg.cc/9fRNCvz4/ssj4blue.png" },
+            { name: "Ssj Rose", link: "https://i.postimg.cc/MGMrqhXj/ssj4rose.png" },
+            { name: "SSJ3 Preto", link: "https://i.postimg.cc/1XcjbwXN/OLHO-SSJ3-PRETO.png" },
+            { name: "SSJ3 Preto/Vermelho", link: "https://i.postimg.cc/gjqT18jX/OLHO-SSJ3-PRETO-com-vermelho.png" },
+            { name: "SSJ3 Galáxia", link: "https://i.postimg.cc/3NCczmNd/OLHO-SSJ3-GALAXIA.png" },
+            { name: "SSJ Branco", link: "https://i.postimg.cc/pdh1RgyR/branco.png" },
+            { name: "SSJ Vermelho", link: "https://i.postimg.cc/rp0YMvz1/vermelho.png" },
+            { name: "SSJ DB", link: "https://i.postimg.cc/JhDdM9tZ/ssjdb.png" },
+            { name: "SSJ Evil", link: "https://i.postimg.cc/LsY02rhj/ssjevil.png" },
+            { name: "SSJ5", link: "https://i.postimg.cc/DzJYntmG/ssj5.png" },
+            { name: "SSJ6 (dourado)", link: "https://i.postimg.cc/TPLHfZhm/ssj6.png" },
+        ]
+    },
+    { 
+        name: "Terceiro Olho", 
+        variants: [
+            { name: "Gomah", link: "https://i.postimg.cc/9XGK45bf/terceiro-olho-gomah.png" },
+            { name: "Goku", link: "https://i.postimg.cc/BZxk89pn/terceiro-olho-goku-(1).png" },
+            { name: "Kaioshin", link: "https://i.postimg.cc/T2rFyM0T/TERCEIRO-OLHO-ORELHA-KAIOSHIN.png" },
+            { name: "Vegeta", link: "https://i.postimg.cc/T2rFyM0w/terceiro-olho-vegeta-(1).png" }
+        ]
+    },
+    { 
+        name: "Esferas", 
+        variants: [
+            { name: "Esfera Maligna (peito)", link: "https://i.postimg.cc/FK88Shwc/Esfera-maligna-peito.png" },
+            { name: "Brancas", link: "https://i.postimg.cc/FK88Shwg/ESFERAS-BRANCAS.png" },
+            { name: "Brancas Alt", link: "https://i.postimg.cc/3wVVG3zF/ESFERAS-BRANCAS-1.png" },
+            { name: "Pretas", link: "https://i.postimg.cc/tgww698z/ESFERAS-PRETAS.png" },
+            { name: "Amarelas", link: "https://i.postimg.cc/9fKK9csG/ESFERAS-AMARELAS.png" },
+            { name: "Azuis", link: "https://i.postimg.cc/CKXX8w9C/ESFERAS-AZUIS.png" },
+            { name: "Azuis Claras", link: "https://i.postimg.cc/LswwPmGt/ESFERAS-AZUIS-CLARAS.png" },
+            { name: "Roxas", link: "https://i.postimg.cc/QMww7jvb/ESFERAS-ROXAS.png" },
+            { name: "Vermelhas", link: "https://i.postimg.cc/9fKK9csL/ESFERAS-VERMELHAS.png" },
+            { name: "Vermelhas Alt", link: "https://i.postimg.cc/BvkkFJRN/ESFERAS-VERMELHAS-1.png" }
+        ]
+    },
+    { 
+        name: "Bio-Android",
+        variants: [
+            { name: "Cell Max Perfeito", link: "https://i.postimg.cc/437FsrnJ/CELL-MAX-PERFEITO.png" },
+            { name: "Cell Perfeito", link: "https://i.postimg.cc/JhDdM9t4/CELLPERFEITO.png" }
+        ]
+    },
+        { 
+        name: "SSJ 6", 
+        variants: [
+            { name: "Marca SSJ6", link: "https://i.postimg.cc/0jq4tckb/MARCA-SSJ6.png" },
+            { name: "Esfera SSJ6", link: "https://i.postimg.cc/Xvmm5ntd/Esfera-SSJ6.png" },
+            { name: "Esfera SSJ6 Alt", link: "https://i.postimg.cc/8C99vTxL/Esfera-SSJ6.png" },
+            { name: "Chifre SSJ6", link: "https://i.postimg.cc/9frszDgD/chifre-do-ssj-6-2.png" }
+        ]
+    },
+    { 
+        name: "Crossovers & Outros", 
+        variants: [
+            { name: "Gojo", link: "https://i.postimg.cc/437Fsrn3/GOJO.png" },
+            { name: "Faixa do Gojo", link: "https://i.postimg.cc/5tTTzfD7/FAIXA-DO-GOJO.png" },
+            { name: "Sukuna Preto", link: "https://i.postimg.cc/kGFpLKGk/SUKUNA-preto.png" },
+            { name: "Sukuna Branco", link: "https://i.postimg.cc/90tnsZ0K/SUKUNA-BRANCO.png" },
+            { name: "Ben 10", link: "https://i.postimg.cc/bvs4dZVr/BEN-10.png" },
+            { name: "Batman Beyond", link: "https://i.postimg.cc/s2vb1MH2/BATMAN-BEYOND.png" },
+            { name: "Enigma do Milênio", link: "https://i.postimg.cc/FK88ShwS/enigma-do-milenio.png" }
+        ]
+    },
+    { 
+        name: "Diversos", 
+        variants: [
+            { name: "Celestial Frost", link: "https://i.postimg.cc/XvptXr13/5.png" },
+            { name: "Eclypso", link: "https://i.postimg.cc/PqpFTBNf/eclypso.png" },
+            { name: "Galáxia", link: "https://i.postimg.cc/HLcPdfjY/galaxia.png" },
+            { name: "Machucado", link: "https://i.postimg.cc/wvNPcSpH/Machucado.png" },
+            { name: "Orelha Kaioshin", link: "https://i.postimg.cc/mkN5KCkS/ORELHA-KAIOSHIN.png" },
+            { name: "UI Body", link: "https://i.postimg.cc/6Q21tDTd/ui-body.png" },
+            { name: "Zen-Oh", link: "https://i.postimg.cc/Gp8SdZ9P/ZEN-OH.png" },
+            { name: "Zenku", link: "https://i.postimg.cc/Y21Z4KRG/zenku-1.png" },
+            { name: "Daishinku Amarelo", link: "https://i.postimg.cc/xdcBqXpk/daishinku-amarelo.png" },
+            { name: "Daishinku Vermelho", link: "https://i.postimg.cc/xdcBqXpJ/daishinku-vermelho.png" },
+            { name: "Círculo Testa", link: "https://i.postimg.cc/XvptXr1p/CIRCULO-VERMELHO-E-PRETO-TESTA.png" },
+            { name: "Esfera Maligna", link: "https://i.postimg.cc/FK88Shwc/Esfera-maligna-peito.png" }
+        ]
+    }
+];
+
+db.sort((a, b) => a.name.localeCompare(b.name));
+
+const grid = document.getElementById('tattoosGrid');
+
+db.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    
+    let currentLink = item.variants[0].link;
+    
+    const imgContainer = document.createElement('div');
+    imgContainer.className = 'img-container';
+    const img = document.createElement('img');
+    img.src = currentLink;
+    img.id = `img-${index}`;
+    imgContainer.appendChild(img);
+    
+    const info = document.createElement('div');
+    info.className = 'info';
+    
+    const title = document.createElement('h3');
+    title.innerText = item.name;
+    
+    const btnCopy = document.createElement('button');
+    btnCopy.className = 'btn-copy';
+    btnCopy.innerText = 'Copiar Link da Imagem';
+    btnCopy.id = `copyBtn-${index}`;
+    btnCopy.onclick = () => copyText(currentLink);
+    
+    info.appendChild(title);
+    info.appendChild(btnCopy);
+    
+    if (item.variants.length > 1) {
+        const variantsTitle = document.createElement('div');
+        variantsTitle.className = 'variants-title';
+        variantsTitle.innerText = 'Variações:';
+        info.appendChild(variantsTitle);
+
+        const variantsGrid = document.createElement('div');
+        variantsGrid.className = 'variants-grid';
+        
+        item.variants.forEach((v, vIndex) => {
+            const vBtn = document.createElement('button');
+            vBtn.className = 'variant-btn';
+            if(vIndex === 0) vBtn.classList.add('active'); 
+            vBtn.innerText = v.name;
+            
+            vBtn.onclick = () => {
+
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.src = v.link;
+                    img.style.opacity = '1';
+                }, 150);
+
+                currentLink = v.link;
+                btnCopy.onclick = () => copyText(currentLink);
+                
+                const allBtns = variantsGrid.querySelectorAll('.variant-btn');
+                allBtns.forEach(b => b.classList.remove('active'));
+                vBtn.classList.add('active');
+            };
+            
+            variantsGrid.appendChild(vBtn);
+        });
+        
+        info.appendChild(variantsGrid);
+    }
+    
+    card.appendChild(imgContainer);
+    card.appendChild(info);
+    grid.appendChild(card);
+});
+
+function copyText(text) {
+    const tempInput = document.createElement('input');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2500);
+}
+</script>
+</body>
+</html>
