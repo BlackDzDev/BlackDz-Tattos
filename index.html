@@ -1,67 +1,812 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BlackDz Tattos</title>
-<style>
-/* PRESERVANDO SEU DESIGN ORIGINAL */
-body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #121212; color: #fff; background-image: radial-gradient(circle at top, #2b1810 0%, #121212 100%); min-height: 100vh; }
-header { background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://comandogeek.com.br/blog/wp-content/uploads/2025/01/Design-sem-nome-2025-01-21T133034.785-1-1024x536.png'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; border-bottom: 4px solid #ff0800; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3); }
-header h1 { margin: 0; font-size: 3.5rem; text-transform: uppercase; color: #ff0000; text-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
-.container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackDz Tattoos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #e8000d;
+            --red-glow: rgba(232,0,13,0.4);
+            --dark: #0a0a0a;
+            --dark2: #111;
+            --dark3: #181818;
+            --dark4: #222;
+            --border: rgba(232,0,13,0.2);
+            --text: #f0f0f0;
+            --muted: #888;
+        }
 
-/* NOVA ÁREA DE UPLOAD INTEGRADA */
-.upload-box { background: #1e1e1e; padding: 30px; border-radius: 15px; border: 2px dashed #ff0800; text-align: center; margin-bottom: 50px; }
-.upload-box input { padding: 12px; margin: 10px; border-radius: 5px; border: 1px solid #333; background: #111; color: #fff; }
-.upload-box button { padding: 12px 25px; background: #ff0000; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
-.upload-box button:disabled { background: #555; cursor: not-allowed; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.section-title { font-size: 2rem; color: #ff0800; border-bottom: 2px solid #333; padding-bottom: 10px; margin: 40px 0 20px; text-transform: uppercase; text-align: center; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-.card { background-color: #1e1e1e; border: 1px solid #333; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: 0.2s; }
-.card:hover { transform: translateY(-5px); border-color: #ff0800; }
-.img-container { height: 220px; background: #000; display: flex; justify-content: center; align-items: center; padding: 15px; }
-.img-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.info { padding: 20px; text-align: center; }
-.btn-copy { width: 100%; padding: 12px; background: #ff0000; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; }
-.variant-btn { background: #2a2a2a; color: #ccc; border: 1px solid #444; padding: 8px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; margin: 2px; }
-.variant-btn.active { background: #ff1e00; color: white; }
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-#toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #ff0000; color: white; padding: 15px 30px; border-radius: 30px; display: none; z-index: 1000; }
-</style>
+        /* NOISE OVERLAY */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.3;
+        }
+
+        /* HEADER */
+        header {
+            position: relative;
+            padding: 70px 20px 50px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(200,0,10,0.18) 0%, transparent 70%);
+        }
+
+        .header-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://comandogeek.com.br/blog/wp-content/uploads/2025/01/Design-sem-nome-2025-01-21T133034.785-1-1024x536.png') center/cover;
+            opacity: 0.07;
+            filter: grayscale(100%);
+        }
+
+        .header-content { position: relative; z-index: 1; }
+
+        .logo-tag {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.4em;
+            color: var(--red);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            padding: 4px 14px;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+        }
+
+        header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            letter-spacing: 0.06em;
+            line-height: 1;
+            color: #fff;
+            text-shadow: 0 0 60px rgba(232,0,13,0.3);
+        }
+
+        header h1 span { color: var(--red); }
+
+        .discord-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+        }
+
+        .discord-tag::before, .discord-tag::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red));
+        }
+        .discord-tag::after { background: linear-gradient(90deg, var(--red), transparent); }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,10,10,0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 20px;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+        }
+
+        .nav-inner::-webkit-scrollbar { display: none; }
+
+        .nav-btn {
+            padding: 16px 24px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover { color: #fff; }
+        .nav-btn.active { color: var(--red); border-bottom-color: var(--red); }
+
+        /* CONTAINER */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+        /* SECTION */
+        .section { display: none; padding: 50px 0; }
+        .section.active { display: block; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.08em;
+            color: #fff;
+        }
+
+        .section-header h2 span { color: var(--red); }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--red), transparent);
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 20px;
+        }
+
+        /* CARD */
+        .card {
+            background: var(--dark3);
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            cursor: default;
+        }
+
+        .card:hover {
+            border-color: rgba(232,0,13,0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px var(--red-glow);
+        }
+
+        .img-container {
+            height: 200px;
+            background: #0d0d0d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 30px;
+            background: linear-gradient(transparent, var(--dark3));
+        }
+
+        .img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .img-container img { transform: scale(1.05); }
+
+        .info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .info h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .btn-copy {
+            width: 100%;
+            padding: 10px;
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-copy:hover {
+            background: #c0000a;
+            box-shadow: 0 0 15px var(--red-glow);
+        }
+
+        .variants {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .variant-btn {
+            background: var(--dark4);
+            color: #999;
+            border: 1px solid #333;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .variant-btn:hover { background: #2a2a2a; color: #fff; border-color: #555; }
+        .variant-btn.active { background: var(--red); color: white; border-color: var(--red); }
+
+        /* =========================================
+           UPLOAD SECTION — NOVO DESIGN
+        ========================================= */
+        .upload-section {
+            background: var(--dark3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+
+        .upload-header {
+            padding: 24px 30px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: linear-gradient(90deg, rgba(232,0,13,0.05), transparent);
+        }
+
+        .upload-icon {
+            width: 42px;
+            height: 42px;
+            background: rgba(232,0,13,0.1);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .upload-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            color: #fff;
+        }
+
+        .upload-header p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            margin-top: 2px;
+        }
+
+        .upload-body {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 14px;
+            align-items: end;
+        }
+
+        @media(max-width: 700px) {
+            .upload-body { grid-template-columns: 1fr; }
+        }
+
+        .field { display: flex; flex-direction: column; gap: 6px; }
+
+        .field label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .field input[type="text"] {
+            padding: 11px 14px;
+            background: var(--dark);
+            color: #fff;
+            border: 1px solid #2a2a2a;
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .field input[type="text"]:focus { border-color: var(--red); }
+        .field input[type="text"]::placeholder { color: #444; }
+
+        .file-drop {
+            padding: 11px 14px;
+            background: var(--dark);
+            color: #fff;
+            border: 1px solid #2a2a2a;
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-drop input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-drop:hover { border-color: var(--red); }
+
+        .file-drop .file-name { color: #888; font-size: 0.85rem; }
+        .file-drop .file-name.selected { color: #fff; }
+
+        .btn-upload {
+            padding: 11px 28px;
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-upload:hover { background: #c0000a; box-shadow: 0 0 20px var(--red-glow); }
+        .btn-upload:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .upload-status {
+            padding: 0 30px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            min-height: 24px;
+        }
+
+        /* COMMUNITY SECTION */
+        .community-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            background: var(--dark3);
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            margin-bottom: 8px;
+        }
+
+        .community-toggle:hover { border-color: var(--border); background: #1d1d1d; }
+        .community-toggle.open { border-color: var(--border); border-radius: 8px 8px 0 0; margin-bottom: 0; }
+
+        .toggle-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .toggle-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(232,0,13,0.1);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .toggle-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .toggle-sub { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+
+        .toggle-arrow {
+            font-size: 1.2rem;
+            color: var(--muted);
+            transition: transform 0.3s;
+        }
+
+        .community-toggle.open .toggle-arrow { transform: rotate(180deg); }
+
+        .community-grid-wrapper {
+            display: none;
+            background: var(--dark3);
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            padding: 24px;
+        }
+
+        .community-grid-wrapper.open { display: block; }
+
+        /* BASE SECTION */
+        .base-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .base-info {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .base-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
+        .base-info p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .base-image-frame {
+            width: 100%;
+            max-width: 800px;
+            background: var(--dark3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .base-image-frame::before {
+            content: 'BASE OFICIAL';
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--red);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            padding: 4px 10px;
+            border-radius: 2px;
+            z-index: 2;
+        }
+
+        .base-image-frame img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .base-image-frame:hover img { transform: scale(1.02); }
+
+        .base-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-base {
+            padding: 12px 28px;
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-base-primary {
+            background: var(--red);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-base-primary:hover { background: #c0000a; box-shadow: 0 0 20px var(--red-glow); }
+
+        .btn-base-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #333;
+        }
+
+        .btn-base-secondary:hover { border-color: var(--red); color: var(--red); }
+
+        .base-tip {
+            background: rgba(232,0,13,0.06);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 24px;
+            max-width: 700px;
+            width: 100%;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .base-tip .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+        .base-tip p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+        .base-tip strong { color: var(--text); }
+
+        /* TOAST */
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--dark3);
+            border: 1px solid var(--red);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            display: none;
+            z-index: 10000;
+            box-shadow: 0 0 30px var(--red-glow);
+            animation: slideUp 0.3s forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--muted);
+        }
+
+        .empty-state .empty-icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.3; }
+        .empty-state p { font-size: 0.9rem; letter-spacing: 0.05em; }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--red); }
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
 <header>
-    <h1>BlackDz Tattos</h1>
-    <p>Chama no Discord: .black.dz.</p>
+    <div class="header-bg"></div>
+    <div class="header-content">
+        <div class="logo-tag">Discord Do Criador: .black.dz.</div>
+        <h1>Black<span>Dz</span> Tattoos</h1>
+        <div class="discord-tag">Bem-Vindo</div>
+    </div>
 </header>
 
-<div class="container">
-    <div style="background: #1e1e1e; padding: 30px; border-radius: 15px; border: 2px dashed #ff0800; text-align: center; margin-bottom: 50px;">
-        <h2 style="color: #ff0000; margin-top: 0;">POSTAR NOVA TATTOO</h2>
-        <input type="text" id="userName" placeholder="Nome da Tattoo" style="padding: 10px; margin: 10px; background: #111; color: #fff; border: 1px solid #333;">
-        <input type="file" id="fileInput" accept="image/*" style="color: #fff;">
-        <button id="uploadBtn" onclick="fazerUpload()" style="padding: 12px 25px; background: #ff0000; color: #fff; border: none; cursor: pointer; font-weight: bold;">PUBLICAR AGORA</button>
-        <p id="status" style="margin-top: 15px; color: #ff0000; font-weight: bold;"></p>
+<nav>
+    <div class="nav-inner">
+        <button class="nav-btn active" onclick="setTab('oficiais', this)">🔥 Oficiais</button>
+        <button class="nav-btn" onclick="setTab('comunidade', this)">👥 Comunidade</button>
+        <button class="nav-btn" onclick="setTab('base', this)">🎨 Base Para Criar Tattoos</button>
+        <button class="nav-btn" onclick="setTab('postar', this)">➕ Postar Tattoo</button>
     </div>
+</nav>
 
-    <h2 style="color: #ff0800; text-align: center; text-transform: uppercase;">🔥 Oficiais</h2>
-    <div class="grid" id="tattoosGrid"></div>
-
-    <h2 style="color: #ff0800; text-align: center; text-transform: uppercase; margin-top: 50px;">👥 Comunidade</h2>
-    <div class="grid" id="comunidadeGrid"></div>
+<!-- ===================== OFICIAIS ===================== -->
+<div id="tab-oficiais" class="section active">
+    <div class="container">
+        <div class="section-header">
+            <h2>Tattoos <span>Oficiais</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="grid" id="oficiaisGrid"></div>
+    </div>
 </div>
 
-<div id="toast">Link Copiado.</div>
+<!-- ===================== COMUNIDADE ===================== -->
+<div id="tab-comunidade" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Tattoos da <span>Comunidade</span></h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="community-toggle" onclick="toggleComunidade(this)">
+            <div class="toggle-left">
+                <div class="toggle-icon">👥</div>
+                <div>
+                    <div class="toggle-label">Tattoos Enviadas pela Comunidade</div>
+                    <div class="toggle-sub">Clique para expandir</div>
+                </div>
+            </div>
+            <div class="toggle-arrow">▼</div>
+        </div>
+        <div class="community-grid-wrapper">
+            <div class="grid" id="comunidadeGrid">
+                <div class="empty-state">
+                    <div class="empty-icon">⏳</div>
+                    <p>Carregando tattoos da comunidade...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== BASE ===================== -->
+<div id="tab-base" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Base Para <span>Criar Tattoos</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="base-section">
+            <div class="base-info">
+                <h3>Base <span style="color:var(--red)">Oficial</span></h3>
+                <p>Use esta base para criar suas próprias tattoos. Edite no Photoshop, Photopea ou qualquer editor de imagens para criar tattoos únicas e enviar para a comunidade.</p>
+            </div>
+
+            <div class="base-image-frame">
+                <img src="https://files.catbox.moe/d4l36d.png" alt="Base para criar tattoos" id="baseImg">
+            </div>
+
+            <div class="base-actions">
+                <a href="https://download1590.mediafire.com/2l6ru1qjcmygH41t6rePnrqlgf2DBXiE9hlkW96pBKtksi4sCuTT_9M5wz8WkgLeAiTXS9z9VorEEaGKWBVo4y77kIGYC9AP3jXZgK5KvI0aljtaPxZxfajOAnWRx_v8gWvVDGSPq9ekmCawSmt4ckRp0sOOsaJp_XccUb-jHJpCSg/isbqmmcg540yuuf/Base.png" download class="btn-base btn-base-primary">
+                    ⬇ Baixar Base
+                </a>
+                <button class="btn-base btn-base-secondary" onclick="copy('https://files.catbox.moe/d4l36d.png')">
+                    🔗 Copiar Link
+                </button>
+            </div>
+
+            <div class="base-tip">
+                <div class="tip-icon">💡</div>
+                <p><strong>Como usar:</strong> Baixe a base, edite com seu editor preferido mantendo as proporções e o fundo transparente (PNG). Depois vá na aba <strong>Postar Tattoo</strong> para enviar sua criação para a comunidade!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== POSTAR ===================== -->
+<div id="tab-postar" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Postar Nova <span>Tattoo</span></h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-header">
+                <div class="upload-icon">✦</div>
+                <div>
+                    <h2>Enviar Tattoo</h2>
+                    <p>Sua tattoo será publicada na seção da Comunidade após o envio</p>
+                </div>
+            </div>
+            <div class="upload-body">
+                <div class="field">
+                    <label>Nome da Tattoo</label>
+                    <input type="text" id="userName" placeholder="Ex: Marca do Diabo v2">
+                </div>
+                <div class="field">
+                    <label>Arquivo de Imagem</label>
+                    <div class="file-drop" id="fileDrop">
+                        <span>📁</span>
+                        <span class="file-name" id="fileNameLabel">Escolher arquivo PNG/JPG...</span>
+                        <input type="file" id="fileInput" accept="image/*" onchange="updateFileName(this)">
+                    </div>
+                </div>
+                <button class="btn-upload" id="uploadBtn" onclick="fazerUpload()">
+                    ✦ Publicar
+                </button>
+            </div>
+            <div class="upload-status" id="status"></div>
+        </div>
+    </div>
+</div>
+
+<div id="toast">✓ Link Copiado!</div>
 
 <script>
-// CONFIGURAÇÃO SUPABASE
-const SB_URL = 'https://cqykanbrgbgggwcfqeey.supabase.co'; 
-const SB_KEY = 'sb_publishable_tKK4N24Dz8ypIC0AcvGVoQ_3T1nDEfX';
+const firebaseConfig = {
+  apiKey: "AIzaSyAXLRLYHX50sX7JU7xWsFzP05oLhvkLytw",
+  authDomain: "blackdz-tattoos.firebaseapp.com",
+  projectId: "blackdz-tattoos",
+  storageBucket: "blackdz-tattoos.firebasestorage.app",
+  messagingSenderId: "250378604086",
+  appId: "1:250378604086:web:19850e97f310aa8836d297",
+  measurementId: "G-XES79W5KFY"
+};
 
-// BANCO DE DADOS OFICIAL (Resumido para o exemplo, adicione o resto depois)
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 const dbOficiais = [
     { name: "Angel", variants: [ { name: "Branca (Padrão)", link: "https://i.postimg.cc/YShTjvD2/ANJO-BRANCA.png" }, { name: "Amarela", link: "https://i.postimg.cc/CKz9dRrS/ANJO-AMARELA.png" }, { name: "Azul Claro", link: "https://i.postimg.cc/JhGStsYR/ANJO-AZUL-CLARO.png" }, { name: "Azul Escuro", link: "https://i.postimg.cc/nLCNMXSF/ANJO-AZUL-ESCURO.png" }, { name: "Roxa", link: "https://i.postimg.cc/LsnGhJQ6/ANJO-ROXO.png" }, { name: "Vermelha", link: "https://i.postimg.cc/zfV43y2G/ANJO-VERMELHA.png" } ] },
     { name: "Fúria", variants: [ { name: "Preta", link: "https://i.postimg.cc/W4CCZsxH/Furia-Preta.png" }, { name: "Vermelha", link: "https://i.postimg.cc/gJh5qfPH/Furia-vermelha.png" }, { name: "Vermelha + God", link: "https://i.postimg.cc/RFt8QjzQ/FURIA-VERMELHA-GOD.png" }, { name: "Azul + God", link: "https://i.postimg.cc/nLggmnNw/FURIA-AZUL-GOD.png" } ] },
@@ -86,89 +831,156 @@ const dbOficiais = [
     { name: "Diversos", variants: [ { name: "Celestial Frost", link: "https://i.postimg.cc/XvptXr13/5.png" }, { name: "Eclypso", link: "https://i.postimg.cc/PqpFTBNf/eclypso.png" }, { name: "Galáxia", link: "https://i.postimg.cc/HLcPdfjY/galaxia.png" }, { name: "Machucado", link: "https://i.postimg.cc/wvNPcSpH/Machucado.png" }, { name: "Orelha Kaioshin", link: "https://i.postimg.cc/mkN5KCkS/ORELHA-KAIOSHIN.png" }, { name: "UI Body", link: "https://i.postimg.cc/6Q21tDTd/ui-body.png" }, { name: "Zen-Oh", link: "https://i.postimg.cc/Gp8SdZ9P/ZEN-OH.png" }, { name: "Zenku", link: "https://i.postimg.cc/Y21Z4KRG/zenku-1.png" }, { name: "Daishinku Amarelo", link: "https://i.postimg.cc/xdcBqXpk/daishinku-amarelo.png" }, { name: "Daishinku Vermelho", link: "https://i.postimg.cc/xdcBqXpJ/daishinku-vermelho.png" }, { name: "Círculo Testa", link: "https://i.postimg.cc/XvptXr1p/CIRCULO-VERMELHO-E-PRETO-TESTA.png" }, { name: "Esfera Maligna", link: "https://i.postimg.cc/FK88Shwc/Esfera-maligna-peito.png" } ] }
 ];
 
-// FUNÇÃO PARA RENDERIZAR GRIDS
+// TAB NAVIGATION
+function setTab(tab, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    btn.classList.add('active');
+
+    if (tab === 'comunidade') carregarComunidade();
+}
+
+// COMMUNITY TOGGLE
+function toggleComunidade(el) {
+    el.classList.toggle('open');
+    el.nextElementSibling.classList.toggle('open');
+}
+
+// RENDER
 function renderizar(data, containerId) {
     const grid = document.getElementById(containerId);
     grid.innerHTML = '';
+
+    if (!data.length) {
+        grid.innerHTML = '<div class="empty-state"><div class="empty-icon">🖋</div><p>Nenhuma tattoo encontrada.</p></div>';
+        return;
+    }
+
     data.forEach((item, idx) => {
         const card = document.createElement('div');
         card.className = 'card';
-        let currentLink = item.variants[0].link;
+        let linkAtual = item.variants[0].link;
+
         card.innerHTML = `
-            <div class="img-container"><img src="${currentLink}" id="img-${containerId}-${idx}"></div>
+            <div class="img-container">
+                <img src="${linkAtual}" id="img-${containerId}-${idx}" loading="lazy">
+            </div>
             <div class="info">
                 <h3>${item.name}</h3>
-                <button class="btn-copy" onclick="copy('${currentLink}')">Copiar Link</button>
-                <div id="vars-${containerId}-${idx}"></div>
+                <button class="btn-copy" id="copybtn-${containerId}-${idx}" onclick="copyAndUpdate('${linkAtual}', '${containerId}', ${idx})">Copiar Link</button>
+                <div class="variants" id="vars-${containerId}-${idx}"></div>
             </div>
         `;
         grid.appendChild(card);
-        if(item.variants.length > 1) {
-            item.variants.forEach(v => {
+
+        if (item.variants.length > 1) {
+            const firstBtn = document.createElement('button');
+            firstBtn.className = 'variant-btn active';
+            firstBtn.innerText = item.variants[0].name;
+            firstBtn.dataset.link = item.variants[0].link;
+            document.getElementById(`vars-${containerId}-${idx}`).appendChild(firstBtn);
+
+            item.variants.forEach((v, vi) => {
+                if (vi === 0) return;
                 const b = document.createElement('button');
                 b.className = 'variant-btn';
                 b.innerText = v.name;
+                b.dataset.link = v.link;
                 b.onclick = () => {
                     document.getElementById(`img-${containerId}-${idx}`).src = v.link;
-                    currentLink = v.link;
+                    document.getElementById(`copybtn-${containerId}-${idx}`).onclick = () => copy(v.link);
+                    document.querySelectorAll(`#vars-${containerId}-${idx} .variant-btn`).forEach(x => x.classList.remove('active'));
+                    b.classList.add('active');
                 };
                 document.getElementById(`vars-${containerId}-${idx}`).appendChild(b);
             });
+
+            firstBtn.onclick = () => {
+                document.getElementById(`img-${containerId}-${idx}`).src = item.variants[0].link;
+                document.getElementById(`copybtn-${containerId}-${idx}`).onclick = () => copy(item.variants[0].link);
+                document.querySelectorAll(`#vars-${containerId}-${idx} .variant-btn`).forEach(x => x.classList.remove('active'));
+                firstBtn.classList.add('active');
+            };
         }
     });
 }
 
-// BUSCAR DADOS DO SUPABASE
+function copyAndUpdate(link, containerId, idx) {
+    copy(link);
+}
+
+let comunidadeCarregada = false;
+function carregarComunidade() {
+    if (comunidadeCarregada) return;
+    comunidadeCarregada = true;
+    db.collection("tattoos").orderBy("timestamp", "desc").get().then((querySnapshot) => {
+        const formatados = [];
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            formatados.push({ name: data.name, variants: [{ name: "Link", link: data.link }] });
+        });
+        renderizar(formatados, 'comunidadeGrid');
+    }).catch(e => {
+        document.getElementById('comunidadeGrid').innerHTML = '<div class="empty-state"><div class="empty-icon">⚠</div><p>Erro ao carregar. Tente novamente.</p></div>';
+    });
+}
+
+function updateFileName(input) {
+    const label = document.getElementById('fileNameLabel');
+    label.textContent = input.files[0] ? input.files[0].name : 'Escolher arquivo PNG/JPG...';
+    label.classList.toggle('selected', !!input.files[0]);
+}
+
 async function fazerUpload() {
-    const fileInput = document.getElementById('fileInput');
+    const file = document.getElementById('fileInput').files[0];
     const name = document.getElementById('userName').value;
     const status = document.getElementById('status');
     const btn = document.getElementById('uploadBtn');
 
-    if (!fileInput.files[0] || !name) return alert("Escolha uma foto e dê um nome!");
+    if (!file || !name) return alert("Preencha o nome e escolha a imagem!");
 
     btn.disabled = true;
-    status.innerText = "A ligar ao servidor...";
-
-    const formData = new FormData();
-    formData.append("image", fileInput.files[0]);
+    status.style.color = '#888';
+    status.innerText = "⏳ Enviando imagem...";
 
     try {
-        // Passo 1: Upload para o ImgBB (Usando uma chave de backup)
-        const resImg = await fetch("https://api.imgbb.com/1/upload?key=67f6770518349479b18868c2a39a4866", {
+        const formData = new FormData();
+        formData.append("reqtype", "fileupload");
+        formData.append("fileToUpload", file);
+
+        const res = await fetch("https://corsproxy.io/?https://catbox.moe/user/api.php", {
             method: "POST",
             body: formData
         });
-        const dataImg = await resImg.json();
 
-        if (!dataImg.success) throw new Error("Erro no ImgBB");
+        const imageUrl = await res.text();
 
-        status.innerText = "A guardar no banco de dados...";
-
-        // Passo 2: Salvar no seu Supabase
-        const resDb = await fetch(`${SB_URL}/rest/v1/tattoos`, {
-            method: "POST",
-            headers: {
-                "apikey": SB_KEY,
-                "Authorization": `Bearer ${SB_KEY}`,
-                "Content-Type": "application/json",
-                "Prefer": "return=minimal"
-            },
-            body: JSON.stringify({ name: name, link: dataImg.data.url })
-        });
-
-        if (resDb.ok) {
-            status.style.color = "#00ff00";
-            status.innerText = "Sucesso! Tattoo publicada.";
-            setTimeout(() => location.reload(), 1500);
+        if (imageUrl.includes("https://")) {
+            status.innerText = "⏳ Salvando no servidor...";
+            await db.collection("tattoos").add({
+                name: name,
+                link: imageUrl.trim(),
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            status.style.color = "#22dd66";
+            status.innerText = "✓ Publicado com sucesso! Redirecionando...";
+            setTimeout(() => {
+                setTab('comunidade', document.querySelectorAll('.nav-btn')[1]);
+                comunidadeCarregada = false;
+                carregarComunidade();
+                document.querySelector('.community-toggle').classList.add('open');
+                document.querySelector('.community-grid-wrapper').classList.add('open');
+                btn.disabled = false;
+                status.innerText = '';
+            }, 1800);
         } else {
-            status.innerText = "Erro: Verifique se desativou o RLS no Supabase.";
+            throw new Error("Resposta inválida.");
         }
-    } catch (error) {
-        status.innerText = "Erro na conexão. Tente outra imagem.";
-        console.error(error);
-    } finally {
+    } catch (e) {
         btn.disabled = false;
+        status.style.color = "#ff4444";
+        status.innerText = "✗ Erro ao postar. Tente novamente.";
     }
 }
 
@@ -179,9 +991,7 @@ function copy(t) {
     setTimeout(() => toast.style.display = 'none', 2000);
 }
 
-// INICIALIZAÇÃO
 renderizar(dbOficiais, 'oficiaisGrid');
-carregarComunidade();
 </script>
 </body>
 </html>
