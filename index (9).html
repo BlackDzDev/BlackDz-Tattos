@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<!--
+    ██████╗ ██╗      █████╗  ██████╗██╗  ██╗██████╗ ███████╗
+    ██╔══██╗██║     ██╔══██╗██╔════╝██║ ██╔╝██╔══██╗╚══███╔╝
+    ██████╔╝██║     ███████║██║     █████╔╝ ██║  ██║  ███╔╝ 
+    ██╔══██╗██║     ██╔══██║██║     ██╔═██╗ ██║  ██║ ███╔╝  
+    ██████╔╝███████╗██║  ██║╚██████╗██║  ██╗██████╔╝███████╗
+    ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═════╝ ╚══════╝
+
+    Site criado por BlackDz — o cara mais bolado do DBC 🖤
+    Discord: .black.dz.
+    Portfólio: https://blackdzdev.github.io/Sobre-Mim/
+    
+    Se você tá lendo isso, parabéns, você é curioso igual eu.
+    Não rouba meu código não hein... ou roba, tanto faz kkkkk
+    
+    v4.0 — Sugestões, Changelog, Discord FAB
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackDz Tattoos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #e8000d;
+            --red-glow: rgba(232,0,13,0.4);
+            --dark: #0a0a0a;
+            --dark2: #111;
+            --dark3: #181818;
+            --dark4: #222;
+            --border: rgba(232,0,13,0.2);
+            --text: #f0f0f0;
+            --muted: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.3;
+        }
+
+        /* HEADER */
+        header {
+            position: relative;
+            padding: 70px 20px 50px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(200,0,10,0.18) 0%, transparent 70%);
+        }
+
+        .header-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://comandogeek.com.br/blog/wp-content/uploads/2025/01/Design-sem-nome-2025-01-21T133034.785-1-1024x536.png') center/cover;
+            opacity: 0.07;
+            filter: grayscale(100%);
+        }
+
+        .header-content { position: relative; z-index: 1; }
+
+        .logo-tag {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.4em;
+            color: var(--red);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            padding: 4px 14px;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+        }
+
+        header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            letter-spacing: 0.06em;
+            line-height: 1;
+            color: #fff;
+            text-shadow: 0 0 60px rgba(232,0,13,0.3);
+        }
+
+        header h1 span { color: var(--red); }
+
+        .discord-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+        }
+
+        .discord-tag::before, .discord-tag::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red));
+        }
+        .discord-tag::after { background: linear-gradient(90deg, var(--red), transparent); }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,10,10,0.97);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            padding: 0 20px;
+        }
+
+        .nav-inner::-webkit-scrollbar { display: none; }
+
+        .nav-btn {
+            padding: 16px 22px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover { color: #fff; }
+        .nav-btn.active { color: var(--red); border-bottom-color: var(--red); }
+
+        /* SEARCH + TAG FILTER BAR */
+        .search-container {
+            background: var(--dark2);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 20px;
+        }
+
+        .search-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .search-row { position: relative; }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            background: var(--dark3);
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 15px rgba(232,0,13,0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 1.2rem;
+        }
+
+        /* CONTAINER */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+        /* SECTION */
+        .section { display: none; padding: 50px 0; }
+        .section.active { display: block; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.08em;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .section-header h2 span { color: var(--red); }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--red), transparent);
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 20px;
+        }
+
+        /* CARD */
+        .card {
+            background: var(--dark3);
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            cursor: default;
+        }
+
+        .card:hover {
+            border-color: rgba(232,0,13,0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px var(--red-glow);
+        }
+
+        .img-container {
+            height: 200px;
+            background: #0d0d0d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 30px;
+            background: linear-gradient(transparent, var(--dark3));
+        }
+
+        .img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .img-container img { transform: scale(1.05); }
+
+        .info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .info-header {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .info h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .tag-pill {
+            background: rgba(232,0,13,0.1);
+            color: var(--red);
+            border: 1px solid rgba(232,0,13,0.2);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .tag-pill:hover {
+            background: rgba(232,0,13,0.25);
+            border-color: var(--red);
+        }
+
+        .btn-copy {
+            width: 100%;
+            padding: 10px;
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            margin-top: auto;
+        }
+
+        .btn-copy:hover {
+            background: #c0000a;
+            box-shadow: 0 0 15px var(--red-glow);
+        }
+
+        .variants {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .variant-btn {
+            background: var(--dark4);
+            color: #999;
+            border: 1px solid #333;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .variant-btn:hover { background: #2a2a2a; color: #fff; border-color: #555; }
+        .variant-btn.active { background: var(--red); color: white; border-color: var(--red); }
+
+        /* UPLOAD SECTION */
+        .upload-section {
+            background: var(--dark3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+
+        .upload-header {
+            padding: 24px 30px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: linear-gradient(90deg, rgba(232,0,13,0.05), transparent);
+        }
+
+        .upload-icon {
+            width: 42px;
+            height: 42px;
+            background: rgba(232,0,13,0.1);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .upload-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            color: #fff;
+        }
+
+        .upload-header p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            margin-top: 2px;
+        }
+
+        .upload-body {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 14px;
+            align-items: end;
+        }
+
+        @media(max-width: 900px) { .upload-body { grid-template-columns: 1fr 1fr; } }
+        @media(max-width: 600px) { .upload-body { grid-template-columns: 1fr; } }
+
+        .field { display: flex; flex-direction: column; gap: 6px; }
+
+        .field label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .field input[type="text"] {
+            padding: 11px 14px;
+            background: var(--dark);
+            color: #fff;
+            border: 1px solid #2a2a2a;
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .field input[type="text"]:focus { border-color: var(--red); }
+        .field input[type="text"]::placeholder { color: #444; }
+
+        /* TAG INPUT */
+        .tag-input-wrap {
+            background: var(--dark);
+            border: 1px solid #2a2a2a;
+            border-radius: 5px;
+            padding: 6px 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            cursor: text;
+            min-height: 42px;
+            align-items: center;
+            transition: border-color 0.2s;
+        }
+        .tag-input-wrap:focus-within { border-color: var(--red); }
+
+        .tag-chip {
+            background: rgba(232,0,13,0.15);
+            color: var(--red);
+            border: 1px solid rgba(232,0,13,0.3);
+            border-radius: 3px;
+            padding: 2px 7px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .tag-chip-x {
+            cursor: pointer;
+            opacity: 0.6;
+            font-size: 13px;
+            line-height: 1;
+        }
+        .tag-chip-x:hover { opacity: 1; }
+
+        .tag-real-input {
+            background: none;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            min-width: 80px;
+            flex: 1;
+        }
+        .tag-real-input::placeholder { color: #444; }
+
+        .tag-suggestions-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 6px 0 0;
+        }
+
+        .tag-sugg {
+            background: var(--dark4);
+            color: #666;
+            border: 1px solid #2a2a2a;
+            padding: 3px 9px;
+            border-radius: 3px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .tag-sugg:hover { border-color: var(--red); color: var(--red); background: rgba(232,0,13,0.05); }
+
+        .file-drop {
+            padding: 11px 14px;
+            background: var(--dark);
+            color: #fff;
+            border: 1px solid #2a2a2a;
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            height: 42px;
+        }
+
+        .file-drop input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-drop:hover { border-color: var(--red); }
+        .file-drop .file-name { color: #888; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .file-drop .file-name.selected { color: #fff; }
+
+        .btn-upload {
+            height: 42px;
+            padding: 0 28px;
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-upload:hover { background: #c0000a; box-shadow: 0 0 20px var(--red-glow); }
+        .btn-upload:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .upload-status {
+            padding: 0 30px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            min-height: 24px;
+        }
+
+        /* COMMUNITY TOGGLE */
+        .community-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            background: var(--dark3);
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            margin-bottom: 8px;
+        }
+
+        .community-toggle:hover { border-color: var(--border); background: #1d1d1d; }
+        .community-toggle.open { border-color: var(--border); border-radius: 8px 8px 0 0; margin-bottom: 0; }
+
+        .toggle-left { display: flex; align-items: center; gap: 14px; }
+        .toggle-icon { width: 36px; height: 36px; background: rgba(232,0,13,0.1); border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .toggle-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.1em; }
+        .toggle-sub { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+        .toggle-arrow { font-size: 1.2rem; color: var(--muted); transition: transform 0.3s; }
+        .community-toggle.open .toggle-arrow { transform: rotate(180deg); }
+
+        .community-grid-wrapper {
+            display: none;
+            background: var(--dark3);
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            padding: 24px;
+        }
+        .community-grid-wrapper.open { display: block; }
+
+        /* BASE SECTION */
+        .base-section { display: flex; flex-direction: column; align-items: center; gap: 30px; padding: 20px 0; }
+        .base-info { max-width: 600px; text-align: center; }
+        .base-info h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.1em; margin-bottom: 10px; }
+        .base-info p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+        .base-image-frame { width: 100%; max-width: 800px; background: var(--dark3); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; position: relative; }
+        .base-image-frame::before { content: 'BASE OFICIAL'; position: absolute; top: 16px; left: 16px; background: var(--red); color: #fff; font-family: 'Orbitron', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; padding: 4px 10px; border-radius: 2px; z-index: 2; }
+        .base-image-frame img { width: 100%; display: block; transition: transform 0.4s; }
+        .base-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .btn-base { padding: 12px 28px; border-radius: 5px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+        .btn-base-primary { background: var(--red); color: #fff; border: none; }
+        .btn-base-primary:hover { background: #c0000a; box-shadow: 0 0 20px var(--red-glow); }
+        .btn-base-secondary { background: transparent; color: #fff; border: 1px solid #333; }
+        .btn-base-secondary:hover { border-color: var(--red); }
+
+        /* ===== FRATURAS / CHANGELOG ===== */
+        .changelog-wrap { display: flex; flex-direction: column; gap: 0; position: relative; }
+
+        .changelog-wrap::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, var(--red), transparent);
+        }
+
+        .changelog-entry {
+            display: flex;
+            gap: 24px;
+            padding: 0 0 32px 0;
+            position: relative;
+        }
+
+        .changelog-dot {
+            width: 39px;
+            height: 39px;
+            border-radius: 50%;
+            border: 2px solid var(--red);
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .changelog-dot.latest {
+            background: rgba(232,0,13,0.15);
+            box-shadow: 0 0 20px var(--red-glow);
+        }
+
+        .changelog-content {
+            flex: 1;
+            background: var(--dark3);
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .changelog-content:hover { border-color: rgba(232,0,13,0.3); }
+
+        .changelog-content-header {
+            padding: 14px 20px;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            background: linear-gradient(90deg, rgba(232,0,13,0.04), transparent);
+        }
+
+        .changelog-version {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: 0.15em;
+        }
+
+        .changelog-date {
+            font-size: 0.72rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+        }
+
+        .changelog-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.08em;
+            color: #fff;
+            width: 100%;
+        }
+
+        .changelog-body { padding: 16px 20px; }
+
+        .changelog-items { display: flex; flex-direction: column; gap: 8px; }
+
+        .changelog-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        .changelog-item-icon { font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+
+        .change-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 2px 6px;
+            border-radius: 2px;
+            margin-left: 6px;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .badge-new { background: rgba(34,221,102,0.15); color: #22dd66; border: 1px solid rgba(34,221,102,0.3); }
+        .badge-fix { background: rgba(255,200,0,0.15); color: #ffc800; border: 1px solid rgba(255,200,0,0.3); }
+        .badge-update { background: rgba(100,150,255,0.15); color: #6496ff; border: 1px solid rgba(100,150,255,0.3); }
+        .badge-remove { background: rgba(232,0,13,0.15); color: var(--red); border: 1px solid rgba(232,0,13,0.3); }
+
+        .changelog-tag-latest {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(232,0,13,0.12);
+            color: var(--red);
+            border: 1px solid var(--border);
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* ===== SUGESTÕES ===== */
+        .sugestao-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        @media(max-width: 800px) { .sugestao-wrap { grid-template-columns: 1fr; } }
+
+        .sugestao-form {
+            background: var(--dark3);
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .sugestao-form-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #222;
+            background: linear-gradient(90deg, rgba(232,0,13,0.05), transparent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sugestao-form-icon {
+            width: 38px; height: 38px;
+            background: rgba(232,0,13,0.1);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+        }
+
+        .sugestao-form-header h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem; letter-spacing: 0.1em;
+        }
+
+        .sugestao-form-header p { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+        .sugestao-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+
+        .sugestao-tipo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+
+        .tipo-btn {
+            background: var(--dark4);
+            border: 1px solid #2a2a2a;
+            color: var(--muted);
+            border-radius: 6px;
+            padding: 10px 8px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            cursor: pointer; transition: all 0.15s;
+            text-align: center; display: flex;
+            flex-direction: column; align-items: center; gap: 4px;
+        }
+        .tipo-btn .tipo-icon { font-size: 1.1rem; }
+        .tipo-btn:hover { border-color: var(--red); color: #fff; background: rgba(232,0,13,0.05); }
+        .tipo-btn.selected { background: rgba(232,0,13,0.12); border-color: var(--red); color: var(--red); }
+
+        .sugestao-textarea {
+            width: 100%;
+            background: var(--dark);
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 12px 14px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical; min-height: 110px;
+            outline: none; transition: border-color 0.2s; line-height: 1.5;
+        }
+        .sugestao-textarea:focus { border-color: var(--red); }
+        .sugestao-textarea::placeholder { color: #444; }
+
+        .sugestao-discord-row {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--dark); border: 1px solid #2a2a2a;
+            border-radius: 6px; padding: 0 14px; transition: border-color 0.2s;
+        }
+        .sugestao-discord-row:focus-within { border-color: var(--red); }
+
+        .discord-prefix {
+            font-size: 0.9rem; color: var(--muted);
+            white-space: nowrap; font-weight: 700; letter-spacing: 0.05em;
+        }
+
+        .sugestao-discord-input {
+            flex: 1; background: none; border: none; outline: none;
+            color: #fff; font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem; padding: 11px 0;
+        }
+        .sugestao-discord-input::placeholder { color: #444; }
+
+        .btn-sugestao {
+            width: 100%; padding: 13px;
+            background: var(--red); color: white; border: none;
+            border-radius: 6px; font-family: 'Rajdhani', sans-serif;
+            font-weight: 700; font-size: 0.85rem; letter-spacing: 0.15em;
+            text-transform: uppercase; cursor: pointer; transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-sugestao:hover { background: #c0000a; box-shadow: 0 0 20px var(--red-glow); }
+        .btn-sugestao:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .sugestao-status {
+            font-size: 0.82rem; font-weight: 600;
+            letter-spacing: 0.05em; min-height: 20px; text-align: center;
+        }
+
+        .sugestao-info { display: flex; flex-direction: column; gap: 16px; }
+
+        .info-card {
+            background: var(--dark3); border: 1px solid #2a2a2a;
+            border-radius: 10px; padding: 18px 20px; transition: border-color 0.2s;
+        }
+        .info-card:hover { border-color: rgba(232,0,13,0.2); }
+
+        .info-card-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem; letter-spacing: 0.1em;
+            color: var(--red); margin-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .info-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+        /* ===== SUGESTÕES ===== */
+        .suggestion-wrap {
+            max-width: 680px;
+        }
+
+        .suggestion-box {
+            background: var(--dark3);
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .suggestion-box-header {
+            padding: 22px 28px;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: linear-gradient(90deg, rgba(232,0,13,0.05), transparent);
+        }
+
+        .suggestion-box-icon {
+            width: 42px;
+            height: 42px;
+            background: rgba(232,0,13,0.1);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .suggestion-box-header h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            color: #fff;
+        }
+
+        .suggestion-box-header p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 2px;
+            letter-spacing: 0.04em;
+        }
+
+        .suggestion-body {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .sug-field { display: flex; flex-direction: column; gap: 7px; }
+
+        .sug-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sug-label .optional {
+            font-size: 0.62rem;
+            font-weight: 400;
+            color: #444;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .sug-input, .sug-textarea, .sug-select {
+            background: var(--dark);
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 11px 14px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+            width: 100%;
+        }
+
+        .sug-input:focus, .sug-textarea:focus, .sug-select:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 10px rgba(232,0,13,0.08);
+        }
+
+        .sug-input::placeholder, .sug-textarea::placeholder { color: #444; }
+
+        .sug-textarea {
+            resize: vertical;
+            min-height: 110px;
+            line-height: 1.5;
+        }
+
+        .sug-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+        .sug-select option { background: #181818; }
+
+        .sug-discord-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sug-discord-prefix {
+            font-size: 0.85rem;
+            color: var(--muted);
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .btn-sugestao {
+            width: 100%;
+            padding: 13px;
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .btn-sugestao:hover { background: #c0000a; box-shadow: 0 0 20px var(--red-glow); }
+        .btn-sugestao:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .sug-status {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            min-height: 20px;
+            text-align: center;
+        }
+
+        .sug-info-box {
+            background: rgba(232,0,13,0.04);
+            border: 1px solid rgba(232,0,13,0.12);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 0.82rem;
+            color: #777;
+            line-height: 1.6;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .sug-info-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+
+        /* DISCORD FAB */
+        .discord-fab {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #5865F2;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px 12px 16px;
+            border-radius: 50px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            box-shadow: 0 4px 20px rgba(88,101,242,0.5);
+            transition: all 0.25s;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 52px;
+        }
+        .discord-fab:hover {
+            max-width: 200px;
+            box-shadow: 0 6px 28px rgba(88,101,242,0.7);
+            transform: translateY(-2px);
+        }
+        .discord-fab svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            fill: #fff;
+        }
+        .discord-fab-label {
+            opacity: 0;
+            transition: opacity 0.2s 0.05s;
+            white-space: nowrap;
+        }
+        .discord-fab:hover .discord-fab-label { opacity: 1; }
+
+        /* BASE INLINE */
+        .base-inline-wrap { margin-top: 0; }
+        /* TOAST */
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--dark3);
+            border: 1px solid var(--red);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            display: none;
+            z-index: 10000;
+            box-shadow: 0 0 30px var(--red-glow);
+            animation: slideUp 0.3s forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--muted);
+            grid-column: 1 / -1;
+        }
+
+        .empty-state .empty-icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.3; }
+        .empty-state p { font-size: 0.9rem; letter-spacing: 0.05em; }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-inner { max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+        .footer-logo span { color: var(--red); }
+
+        .footer-text { font-size: 0.75rem; color: #444; letter-spacing: 0.1em; }
+        .footer-link { color: var(--red); text-decoration: none; }
+        .footer-link:hover { text-decoration: underline; }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--red); }
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="header-bg"></div>
+    <div class="header-content">
+        <div class="logo-tag">Discord Do Criador: .black.dz.</div>
+        <h1>Black<span>Dz</span> Tattoos</h1>
+        <div class="discord-tag">Bem-Vindo</div>
+    </div>
+</header>
+
+<nav>
+    <div class="nav-inner">
+        <button class="nav-btn active" onclick="setTab('oficiais', this)">🔥 Oficiais</button>
+        <button class="nav-btn" onclick="setTab('comunidade', this)">👥 Comunidade</button>
+        <button class="nav-btn" onclick="setTab('postar', this)">➕ Postar Tattoo</button>
+        <button class="nav-btn" onclick="setTab('sugestoes', this)">💬 Sugestões</button>
+        <button class="nav-btn" onclick="setTab('fraturas', this)">📋 Changelog</button>
+    </div>
+</nav>
+
+<div class="search-container">
+    <div class="search-inner">
+        <div class="search-row">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="Pesquisar por nome ou tag (ex: anjo, furia, deus)..." onkeyup="pesquisarTattoos()">
+        </div>
+    </div>
+</div>
+
+<!-- PESQUISA -->
+<div id="tab-pesquisa" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Resultados da <span>Pesquisa</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="grid" id="pesquisaGrid"></div>
+    </div>
+</div>
+
+<!-- OFICIAIS -->
+<div id="tab-oficiais" class="section active">
+    <div class="container">
+        <div class="section-header">
+            <h2>Tattoos <span>Oficiais</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="grid" id="oficiaisGrid"></div>
+
+        <!-- BASE DENTRO DOS OFICIAIS -->
+        <div class="base-inline-wrap">
+            <div class="section-header" style="margin-top:60px">
+                <h2>Base Para <span>Criar</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="base-section">
+                <div class="base-info">
+                    <h3>Base <span style="color:var(--red)">Oficial</span></h3>
+                    <p>Use esta base para criar suas próprias tattoos para o DBC. Edite mantendo as proporções e o fundo transparente (PNG).</p>
+                </div>
+                <div class="base-image-frame">
+                    <img src="https://files.catbox.moe/d4l36d.png" alt="Base para criar tattoos">
+                </div>
+                <div class="base-actions">
+                    <a href="https://download1590.mediafire.com/2l6ru1qjcmygH41t6rePnrqlgf2DBXiE9hlkW96pBKtksi4sCuTT_9M5wz8WkgLeAiTXS9z9VorEEaGKWBVo4y77kIGYC9AP3jXZgK5KvI0aljtaPxZxfajOAnWRx_v8gWvVDGSPq9ekmCawSmt4ckRp0sOOsaJp_XccUb-jHJpCSg/isbqmmcg540yuuf/Base.png" download class="btn-base btn-base-primary">⬇ Baixar Base</a>
+                    <button class="btn-base btn-base-secondary" onclick="copy('https://files.catbox.moe/d4l36d.png')">🔗 Copiar Link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- COMUNIDADE -->
+<div id="tab-comunidade" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Tattoos da <span>Comunidade</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="community-toggle" onclick="toggleComunidade(this)">
+            <div class="toggle-left">
+                <div class="toggle-icon">👥</div>
+                <div>
+                    <div class="toggle-label">Tattoos Enviadas pela Comunidade</div>
+                    <div class="toggle-sub">Clique para expandir</div>
+                </div>
+            </div>
+            <div class="toggle-arrow">▼</div>
+        </div>
+        <div class="community-grid-wrapper">
+            <div class="grid" id="comunidadeGrid">
+                <div class="empty-state">
+                    <div class="empty-icon">⏳</div>
+                    <p>Carregando tattoos da comunidade...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- POSTAR
+
+<!-- POSTAR -->
+<div id="tab-postar" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Postar Nova <span>Tattoo</span></h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-header">
+                <div class="upload-icon">➕</div>
+                <div>
+                    <h2>Enviar Tattoo</h2>
+                    <p>Sua tattoo será publicada na seção da Comunidade após o envio</p>
+                </div>
+            </div>
+            <div class="upload-body">
+                <div class="field">
+                    <label>Nome da Tattoo</label>
+                    <input type="text" id="userName" placeholder="Ex: Marca Majin Custom">
+                </div>
+                <div class="field">
+                    <label>Tags <span style="color:#444;font-size:0.65rem;text-transform:none;letter-spacing:0">(Enter ou vírgula para adicionar)</span></label>
+                    <div class="tag-input-wrap" id="tagInputWrap" onclick="document.getElementById('tagRealInput').focus()">
+                        <input class="tag-real-input" id="tagRealInput" placeholder="Ex: testa, anjo..." onkeydown="handleTagKey(event)">
+                    </div>
+                    <div class="tag-suggestions-row">
+                        <button class="tag-sugg" onclick="addTagSugg('testa')">testa</button>
+                        <button class="tag-sugg" onclick="addTagSugg('rosto')">rosto</button>
+                        <button class="tag-sugg" onclick="addTagSugg('costas')">costas</button>
+                        <button class="tag-sugg" onclick="addTagSugg('peito')">peito</button>
+                        <button class="tag-sugg" onclick="addTagSugg('anjo')">anjo</button>
+                        <button class="tag-sugg" onclick="addTagSugg('demonio')">demônio</button>
+                        <button class="tag-sugg" onclick="addTagSugg('god')">god</button>
+                        <button class="tag-sugg" onclick="addTagSugg('evil')">evil</button>
+                        <button class="tag-sugg" onclick="addTagSugg('custom')">custom</button>
+                        <button class="tag-sugg" onclick="addTagSugg('roupas')">roupas</button>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Arquivo</label>
+                    <div class="file-drop" id="fileDrop">
+                        <span>📁</span>
+                        <span class="file-name" id="fileNameLabel">Escolher arquivo...</span>
+                        <input type="file" id="fileInput" accept="image/*" onchange="updateFileName(this)">
+                    </div>
+                </div>
+                <button class="btn-upload" id="uploadBtn" onclick="fazerUpload()">➕ Publicar</button>
+            </div>
+            <div class="upload-status" id="status"></div>
+        </div>
+    </div>
+</div>
+
+<!-- FRATURAS / CHANGELOG -->
+<div id="tab-fraturas" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Change<span>log</span></h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="changelog-wrap">
+
+            <!-- v4 — ATUAL -->
+            <div class="changelog-entry">
+                <div class="changelog-dot latest">🔥</div>
+                <div class="changelog-content">
+                    <div class="changelog-content-header">
+                        <div>
+                            <div class="changelog-version">v4.0</div>
+                            <div class="changelog-title">Aba de Changelog & Melhorias na Comunidade</div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+                            <span class="changelog-tag-latest">⚡ Atual</span>
+                            <span class="changelog-date">2026</span>
+                        </div>
+                    </div>
+                    <div class="changelog-body">
+                        <div class="changelog-items">
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Aba "Changelog" com histórico completo de versões do site <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Aba "Sugestões" — galera pode mandar ideias direto pro Discord do BlackDz <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Botão flutuante do Discord no canto da tela <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Base para criar tattoos movida para dentro da aba Oficiais <span class="change-badge badge-update">update</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Sistema de tags ao postar tattoo com chips interativos e sugestões rápidas <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">🔧</span><span>Correção do erro de CORS no upload pro Catbox — fallback automático com múltiplos proxies <span class="change-badge badge-fix">fix</span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v3 -->
+            <div class="changelog-entry">
+                <div class="changelog-dot">🔨</div>
+                <div class="changelog-content">
+                    <div class="changelog-content-header">
+                        <div>
+                            <div class="changelog-version">v3.0</div>
+                            <div class="changelog-title">Sistema de Postagem & Comunidade — Rework Completo</div>
+                        </div>
+                        <span class="changelog-date">2026</span>
+                    </div>
+                    <div class="changelog-body">
+                        <div class="changelog-items">
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Adicionado sistema completo de postagem de tattoos pela comunidade <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Aba "Comunidade" com toggle expansível e integração com Firebase Firestore <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Aba "Postar Tattoo" com upload via Catbox + salvamento automático no banco <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Rework visual completo do site — novo layout, tipografia e efeitos <span class="change-badge badge-update">update</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Toast de confirmação ao copiar link e redirecionamento pós-upload <span class="change-badge badge-new">novo</span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v2 -->
+            <div class="changelog-entry">
+                <div class="changelog-dot">🎨</div>
+                <div class="changelog-content">
+                    <div class="changelog-content-header">
+                        <div>
+                            <div class="changelog-version">v2.0</div>
+                            <div class="changelog-title">Mudança de Visual & Mais Tattoos Oficiais</div>
+                        </div>
+                        <span class="changelog-date">2026</span>
+                    </div>
+                    <div class="changelog-body">
+                        <div class="changelog-items">
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Renovação visual do site — cores, fontes e estrutura geral repaginadas <span class="change-badge badge-update">update</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Diversas novas tattoos oficiais adicionadas à galeria <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Sistema de variantes de cor por tattoo — troca de versão direto no card <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Aba "Base Para Criar" com download da base oficial <span class="change-badge badge-new">novo</span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v1 -->
+            <div class="changelog-entry">
+                <div class="changelog-dot">🖤</div>
+                <div class="changelog-content">
+                    <div class="changelog-content-header">
+                        <div>
+                            <div class="changelog-version">v1.0</div>
+                            <div class="changelog-title">Site Criado</div>
+                        </div>
+                        <span class="changelog-date">2026</span>
+                    </div>
+                    <div class="changelog-body">
+                        <div class="changelog-items">
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>BlackDz Tattoos criado do zero por <strong style="color:var(--red)">BlackDz</strong> <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Galeria inicial de tattoos oficiais do DBC <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Barra de pesquisa por nome e tag <span class="change-badge badge-new">novo</span></span></div>
+                            <div class="changelog-item"><span class="changelog-item-icon">➕</span><span>Design dark temático com vermelho e tipografia Bebas Neue + Orbitron <span class="change-badge badge-new">novo</span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- SUGESTÕES -->
+<div id="tab-sugestoes" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Enviar <span>Sugestão</span></h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="sugestao-wrap">
+            <div class="sugestao-form">
+                <div class="sugestao-form-header">
+                    <div class="sugestao-form-icon">💡</div>
+                    <div>
+                        <h3>Nova Sugestão</h3>
+                        <p>Sua ideia vai direto pro Discord do BlackDz</p>
+                    </div>
+                </div>
+                <div class="sugestao-body">
+                    <div class="field">
+                        <label>Tipo de Sugestão</label>
+                        <div class="sugestao-tipo-grid">
+                            <button class="tipo-btn selected" onclick="selecionarTipo(this, 'Nova Tattoo')">
+                                <span class="tipo-icon">🖋</span> Nova Tattoo
+                            </button>
+                            <button class="tipo-btn" onclick="selecionarTipo(this, 'Melhoria Visual')">
+                                <span class="tipo-icon">🎨</span> Visual
+                            </button>
+                            <button class="tipo-btn" onclick="selecionarTipo(this, 'Bug / Erro')">
+                                <span class="tipo-icon">🔧</span> Bug
+                            </button>
+                            <button class="tipo-btn" onclick="selecionarTipo(this, 'Nova Função')">
+                                <span class="tipo-icon">⚙️</span> Função
+                            </button>
+                            <button class="tipo-btn" onclick="selecionarTipo(this, 'Remoção')">
+                                <span class="tipo-icon">🗑️</span> Remover
+                            </button>
+                            <button class="tipo-btn" onclick="selecionarTipo(this, 'Outro')">
+                                <span class="tipo-icon">💬</span> Outro
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Seu Discord <span style="color:#555;text-transform:none;letter-spacing:0;font-size:0.65rem">(opcional — pra levar os créditos)</span></label>
+                        <div class="sugestao-discord-row">
+                            <span class="discord-prefix">@</span>
+                            <input class="sugestao-discord-input" id="sugestaoDiscord" type="text" placeholder="seu_usuario">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Sua Sugestão</label>
+                        <textarea class="sugestao-textarea" id="sugestaoTexto" placeholder="Descreva sua ideia com detalhes..."></textarea>
+                    </div>
+
+                    <button class="btn-sugestao" id="btnSugestao" onclick="enviarSugestao()">
+                        📨 Enviar Sugestão
+                    </button>
+                    <div class="sugestao-status" id="sugestaoStatus"></div>
+                </div>
+            </div>
+
+            <div class="sugestao-info">
+                <div class="info-card">
+                    <div class="info-card-title">💡 Como funciona?</div>
+                    <p>Sua sugestão é enviada diretamente pro Discord do BlackDz via webhook. Ele recebe na hora e decide o que implementar no site.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-title">🏆 Créditos</div>
+                    <p>Se colocar seu usuário do Discord, o BlackDz vai dar os créditos pra você no Changelog quando a sugestão virar realidade.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-title">📋 Tipos de Sugestão</div>
+                    <p><strong style="color:#fff">Nova Tattoo</strong> — Pede uma tattoo nova pra galeria oficial.<br><br>
+                    <strong style="color:#fff">Visual</strong> — Mudança no design, cores ou layout do site.<br><br>
+                    <strong style="color:#fff">Bug</strong> — Algo tá quebrado ou não funciona direito.<br><br>
+                    <strong style="color:#fff">Função</strong> — Uma feature nova que você quer ver.<br><br>
+                    <strong style="color:#fff">Remover</strong> — Algo que acha desnecessário.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- DISCORD FAB -->
+<a class="discord-fab" href="https://discord.gg/QrPpzPJpZj" target="_blank" title="Entrar no Discord">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+    </svg>
+    <span class="discord-fab-label">Entrar no Discord</span>
+</a>
+
+<div id="toast">✓ Link Copiado!</div>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">Black<span>Dz</span> Tattoos</div>
+        <div class="footer-text">Criado por <strong style="color:var(--red)">BlackDz</strong> — Discord: .black.dz.</div>
+        <div class="footer-text" style="color:#2a2a2a">// BlackDz fez esse site boladão — não esquece não 😎</div>
+    </div>
+</footer>
+
+<script>
+// =====================================================
+//  BlackDz Tattoos — v3.0
+//  Criado pelo lendário BlackDz 🖤
+//  discord: .black.dz. | github: blackdzdev
+// =====================================================
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAXLRLYHX50sX7JU7xWsFzP05oLhvkLytw",
+    authDomain: "blackdz-tattoos.firebaseapp.com",
+    projectId: "blackdz-tattoos",
+    storageBucket: "blackdz-tattoos.firebasestorage.app",
+    messagingSenderId: "250378604086",
+    appId: "1:250378604086:web:19850e97f310aa8836d297",
+    measurementId: "G-XES79W5KFY"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+let todasTattoosComunidade = [];
+let tabAtual = 'oficiais';
+let postTags = [];
+
+// ── UPLOAD via Litterbox (sem CORS, sem proxy, funciona direto) ──
+// ── Upload de imagem — ImgBB (permanente) com fallback Litterbox ──
+
+// ── DB OFICIAIS ──
+const dbOficiais = [
+    { name: "Angel", tags: ["anjo", "asas", "costas"], variants: [ { name: "Branca", link: "https://i.postimg.cc/YShTjvD2/ANJO-BRANCA.png" }, { name: "Amarela", link: "https://i.postimg.cc/CKz9dRrS/ANJO-AMARELA.png" }, { name: "Azul Claro", link: "https://i.postimg.cc/JhGStsYR/ANJO-AZUL-CLARO.png" }, { name: "Azul Escuro", link: "https://i.postimg.cc/nLCNMXSF/ANJO-AZUL-ESCURO.png" }, { name: "Roxa", link: "https://i.postimg.cc/LsnGhJQ6/ANJO-ROXO.png" }, { name: "Vermelha", link: "https://i.postimg.cc/zfV43y2G/ANJO-VERMELHA.png" } ] },
+    { name: "Fúria", tags: ["furia", "rage", "testa", "raiva"], variants: [ { name: "Preta", link: "https://i.postimg.cc/W4CCZsxH/Furia-Preta.png" }, { name: "Vermelha", link: "https://i.postimg.cc/gJh5qfPH/Furia-vermelha.png" }, { name: "Vermelha + God", link: "https://i.postimg.cc/RFt8QjzQ/FURIA-VERMELHA-GOD.png" }, { name: "Azul + God", link: "https://i.postimg.cc/nLggmnNw/FURIA-AZUL-GOD.png" } ] },
+    { name: "God", tags: ["deus", "god", "divino", "testa"], variants: [ { name: "Branco", link: "https://i.postimg.cc/vmkknGCD/DEUS-BRANCO.png" }, { name: "Padrão 1", link: "https://i.postimg.cc/vmcCD426/DEUS-1.png" }, { name: "Padrão 2", link: "https://i.postimg.cc/JhGStsYk/Deus-2.png" }, { name: "Amarelo", link: "https://i.postimg.cc/1z22Fyb3/DEUS-AMARELO.png" }, { name: "Azul Claro", link: "https://i.postimg.cc/0NFFS9hN/DEUS-AZUL-CLARO.png" }, { name: "Azul Escuro", link: "https://i.postimg.cc/DzHHG7RZ/DEUS-AZUL-ESCURO.png" }, { name: "Verde", link: "https://i.postimg.cc/43qqcXjK/DEUS-VERDE.png" }, { name: "Vermelho", link: "https://i.postimg.cc/DzHHG7R4/DEUS-VERMELHO.png" }, { name: "Roxo", link: "https://i.postimg.cc/vmkknGCg/DEUS-ROXO.png" }, { name: "Roxo Brilh", link: "https://i.postimg.cc/xdhhm9BX/DEUS-ROXO-BRIHANTE.png" } ] },
+    { name: "Infinito", tags: ["infinito", "simbolo", "testa"], variants: [ { name: "Branco", link: "https://i.postimg.cc/gJh5qfPS/INFINITO-BRANCO.png" }, { name: "Preto", link: "https://i.postimg.cc/1tFTcLZj/INFINITO-PRETO.png" }, { name: "Azul", link: "https://i.postimg.cc/gJh5qfPM/INFINITO-AZUL.png" }, { name: "Azul Escuro", link: "https://i.postimg.cc/85v3BqVt/INFINITO-AZUL-ESCURO.png" }, { name: "Vermelho", link: "https://i.postimg.cc/gJh5qfWb/INFINITO-VERMELHO.png" }, { name: "Roxo", link: "https://i.postimg.cc/LXP7BrMG/INFINITO-ROXO.png" }, { name: "Roxo Hyper", link: "https://i.postimg.cc/wvNPcSdZ/INFINITO-ROXO-HYPER.png" }, { name: "Bug Roxa", link: "https://i.postimg.cc/3RG6CPHB/Infinit-Bug-roxa.png" } ] },
+    { name: "Infinito Com Olhos", tags: ["infinito", "olhos", "evil", "testa"], variants: [ { name: "Preto/Vermelho", link: "https://i.postimg.cc/ZRNgF1hs/INFINITO-PRETO-COM-OLHO-PRETO-E-VERMELHO.png" }, { name: "Vermelho/Preto", link: "https://i.postimg.cc/LXP7BrpK/INFINITO-VERMELHO-COM-OLHO-VERMELHO-E-PRETO.png" }, { name: "Vermelho Alt", link: "https://i.postimg.cc/sXW89trF/INFINITO-VERMELHO-COM-OLHO-VERMELHO-E-PRETO-Copia.png" }, { name: "Roxo/Preto", link: "https://i.postimg.cc/Qt7PkRrz/INFINITO-ROXO-COM-OLHO-PRETO-E-VERMELHO.png" }, { name: "Roxo/Vermelho", link: "https://i.postimg.cc/xCm7yWS7/INFINITO-ROXO-COM-OLHO-ROXO-E-VERMELHO.png" } ] },
+    { name: "Majin", tags: ["majin", "m", "marca", "testa"], variants: [ { name: "Marca Majin", link: "https://i.postimg.cc/KjyW9JGj/marca-majin.png" }, { name: "Majin Anjo", link: "https://i.postimg.cc/50zGqZVV/majin-anjo-4.png" } ] },
+    { name: "Makai", tags: ["makai", "demonio", "testa"], variants: [ { name: "Makai", link: "https://i.postimg.cc/vTdKP3QJ/makai.png" }, { name: "Makai 2.0", link: "https://i.postimg.cc/DZGDdtT2/makai-2-0.png" }, { name: "Supremo", link: "https://i.postimg.cc/ydR5XwH1/makai-supremo.png" }, { name: "Supremo 2", link: "https://i.postimg.cc/pTj7YgHV/makai-supremo-2.png" } ] },
+    { name: "Baby", tags: ["baby", "tsufurujin", "rosto"], variants: [ { name: "Forma 1", link: "https://i.postimg.cc/gjP7MNz9/MARCA-BABY-1.png" }, { name: "Forma 2", link: "https://i.postimg.cc/cCNzDXxy/MARCA-BABY-2.png" } ] },
+    { name: "Hakaishin", tags: ["hakaishin", "bills", "hakai", "testa"], variants: [ { name: "Branca", link: "https://i.postimg.cc/4yT08BfX/MARCA-BILLS-BRANCA.png" }, { name: "Preta", link: "https://i.postimg.cc/6qNPHYWW/MARCA-BILLS-PRETA.png" }, { name: "Azul Claro", link: "https://i.postimg.cc/zv1Qd0zY/MARCA-BILLS-AZUL-CLARO.png" }, { name: "Azul Escuro", link: "https://i.postimg.cc/D0KNCBvn/MARCA-BILLS-AZUL-ESCURO.png" }, { name: "Roxo", link: "https://i.postimg.cc/yxzGfv18/MARCA-BILLS-ROXO.png" }, { name: "Símbolo Hakai", link: "https://i.postimg.cc/nrtWd0FH/MARCA-BILLS-HAKAI.png" }, { name: "Traje Bills", link: "https://i.postimg.cc/wBybgS3v/HAKAISHIN-BILLS.png" } ] },
+    { name: "Marca X", tags: ["x", "marca", "rosto"], variants: [ { name: "Vermelha", link: "https://i.postimg.cc/nrtWd0F9/MARCA-X-VERMELHA.png" }, { name: "Azul", link: "https://i.postimg.cc/WzPy9XNF/MARCA-X-AZUL.png" }, { name: "Amarela", link: "https://i.postimg.cc/WzPy9XNd/MARCA-X-AMARELA.png" }, { name: "Na Testa", link: "https://i.postimg.cc/mD9qN0Gv/Infinito-testa.png" } ] },
+    { name: "Namekuseijin", tags: ["namekuseijin", "piccolo", "god", "namek"], variants: [ { name: "Branco", link: "https://i.postimg.cc/kGdHjfJW/NAMEK-BRANCO.png" }, { name: "Preto", link: "https://i.postimg.cc/rsLHhQV1/NAMEK-PRETO.png" }, { name: "Azul Claro", link: "https://i.postimg.cc/brj563yk/NAMEK-AZUL-CLARO.png" }, { name: "God 1", link: "https://i.postimg.cc/KYksxd48/namekgod1.png" }, { name: "God 2", link: "https://i.postimg.cc/CKB6SWd5/namekgod2.png" } ] },
+    { name: "Primal God", tags: ["primal", "god", "divino"], variants: [ { name: "Primal 2.0", link: "https://i.postimg.cc/fbtgD6kV/primal.png" }, { name: "Black", link: "https://i.postimg.cc/QCkyv1Cm/PRIMAL-BLACK.png" }, { name: "Azul Escuro", link: "https://i.postimg.cc/6qLmFnq0/PRIMAL-AZUL-ESCURO.png" }, { name: "Red", link: "https://i.postimg.cc/x8y4BM8s/PRIMAL-RED.png" }, { name: "Rosa", link: "https://i.postimg.cc/FzgBw3zW/PRIMAL-ROSA.png" }, { name: "Verde", link: "https://i.postimg.cc/rsCP7xsZ/PRIMAL-VERDE.png" } ] },
+    { name: "Omni God", tags: ["omni", "god", "supremo"], variants: [ { name: "Black", link: "https://i.postimg.cc/VvBV2nvM/OMNI-GOD-PRETO.png" }, { name: "Red", link: "https://i.postimg.cc/BbcVRHbH/OMNI-GOD-RED.png" }, { name: "2 Black", link: "https://i.postimg.cc/L5BbGL5k/OMNIGOD-2-BLACK.png" }, { name: "2 Red", link: "https://i.postimg.cc/hvb5NTv1/OMNIGOD-2-RED.png" }, { name: "Evil", link: "https://i.postimg.cc/SK2tkwjj/omnigod-evil.png" } ] },
+    { name: "SSJ4 & Daima", tags: ["ssj4", "daima", "transformacao"], variants: [ { name: "Daima Branco", link: "https://i.postimg.cc/mrz6B0hz/SSJ4DAIMA-BRANCO.png" }, { name: "Daima", link: "https://i.postimg.cc/wBybgS3m/ssj4daima.png" }, { name: "Daima 2", link: "https://i.postimg.cc/9fRNCvzr/SSJ4-DAIMA.png" }, { name: "Blue", link: "https://i.postimg.cc/9fRNCvz4/ssj4blue.png" }, { name: "Rose", link: "https://i.postimg.cc/MGMrqhXj/ssj4rose.png" } ] },
+    { name: "Rostos - Olhos", tags: ["rosto", "olhos", "ssj", "ssj3", "ssj5"], variants: [ { name: "Ssj Blue", link: "https://i.postimg.cc/9fRNCvz4/ssj4blue.png" }, { name: "Ssj Rose", link: "https://i.postimg.cc/MGMrqhXj/ssj4rose.png" }, { name: "SSJ3 Preto", link: "https://i.postimg.cc/1XcjbwXN/OLHO-SSJ3-PRETO.png" }, { name: "SSJ3 Preto/Verm", link: "https://i.postimg.cc/gjqT18jX/OLHO-SSJ3-PRETO-com-vermelho.png" }, { name: "SSJ3 Galáxia", link: "https://i.postimg.cc/3NCczmNd/OLHO-SSJ3-GALAXIA.png" }, { name: "SSJ Branco", link: "https://i.postimg.cc/pdh1RgyR/branco.png" }, { name: "SSJ Verm", link: "https://i.postimg.cc/rp0YMvz1/vermelho.png" }, { name: "SSJ DB", link: "https://i.postimg.cc/JhDdM9tZ/ssjdb.png" }, { name: "SSJ Evil", link: "https://i.postimg.cc/LsY02rhj/ssjevil.png" }, { name: "SSJ5", link: "https://i.postimg.cc/DzJYntmG/ssj5.png" }, { name: "SSJ6 Dourado", link: "https://i.postimg.cc/TPLHfZhm/ssj6.png" } ] },
+    { name: "Terceiro Olho", tags: ["terceiro olho", "testa", "gomah", "kaioshin"], variants: [ { name: "Gomah", link: "https://i.postimg.cc/9XGK45bf/terceiro-olho-gomah.png" }, { name: "Goku", link: "https://i.postimg.cc/BZxk89pn/terceiro-olho-goku-(1).png" }, { name: "Kaioshin", link: "https://i.postimg.cc/T2rFyM0T/TERCEIRO-OLHO-ORELHA-KAIOSHIN.png" }, { name: "Vegeta", link: "https://i.postimg.cc/T2rFyM0w/terceiro-olho-vegeta-(1).png" } ] },
+    { name: "Roupas", tags: ["roupas", "outfit"], variants: [ { name: "Goku Black (heroes)", link: "https://i.imgur.com/PcjHWsm.png" }, { name: "Hero", link: "https://i.imgur.com/wEpHcza.png" }, { name: "Semi-Deus", link: "https://i.imgur.com/zPEUppq.png" }, { name: "Guardiao Celestial", link: "https://i.imgur.com/ivDN8Jj.png" }, { name: "Absolute", link: "https://i.imgur.com/M1En4Xf.png" }, { name: "Supreme Hakaishin", link: "https://i.imgur.com/NOkzRk9.png" } ] },
+    { name: "Esferas", tags: ["esferas", "peito", "maligna"], variants: [ { name: "Maligna", link: "https://i.postimg.cc/FK88Shwc/Esfera-maligna-peito.png" }, { name: "Brancas", link: "https://i.postimg.cc/FK88Shwg/ESFERAS-BRANCAS.png" }, { name: "Brancas Alt", link: "https://i.postimg.cc/3wVVG3zF/ESFERAS-BRANCAS-1.png" }, { name: "Pretas", link: "https://i.postimg.cc/tgww698z/ESFERAS-PRETAS.png" }, { name: "Amarelas", link: "https://i.postimg.cc/9fKK9csG/ESFERAS-AMARELAS.png" }, { name: "Azuis", link: "https://i.postimg.cc/CKXX8w9C/ESFERAS-AZUIS.png" }, { name: "Azuis Claras", link: "https://i.postimg.cc/LswwPmGt/ESFERAS-AZUIS-CLARAS.png" }, { name: "Roxas", link: "https://i.postimg.cc/QMww7jvb/ESFERAS-ROXAS.png" }, { name: "Vermelhas", link: "https://i.postimg.cc/9fKK9csL/ESFERAS-VERMELHAS.png" } ] },
+    { name: "Bio-Android", tags: ["cell", "bio", "android"], variants: [ { name: "Max Perfeito", link: "https://i.postimg.cc/437FsrnJ/CELL-MAX-PERFEITO.png" }, { name: "Perfeito", link: "https://i.postimg.cc/JhDdM9t4/CELLPERFEITO.png" } ] },
+    { name: "SSJ 6", tags: ["ssj6", "chifre", "esfera"], variants: [ { name: "Marca SSJ6", link: "https://i.postimg.cc/0jq4tckb/MARCA-SSJ6.png" }, { name: "Esfera SSJ6", link: "https://i.postimg.cc/Xvmm5ntd/Esfera-SSJ6.png" }, { name: "Esfera Alt", link: "https://i.postimg.cc/8C99vTxL/Esfera-SSJ6.png" }, { name: "Chifre", link: "https://i.postimg.cc/9frszDgD/chifre-do-ssj-6-2.png" } ] },
+    { name: "Crossovers", tags: ["gojo", "sukuna", "ben10", "batman", "crossover"], variants: [ { name: "Gojo", link: "https://i.postimg.cc/437Fsrn3/GOJO.png" }, { name: "Faixa Gojo", link: "https://i.postimg.cc/5tTTzfD7/FAIXA-DO-GOJO.png" }, { name: "Sukuna Preto", link: "https://i.postimg.cc/kGFpLKGk/SUKUNA-preto.png" }, { name: "Sukuna Branco", link: "https://i.postimg.cc/90tnsZ0K/SUKUNA-BRANCO.png" }, { name: "Ben 10", link: "https://i.postimg.cc/bvs4dZVr/BEN-10.png" }, { name: "Batman", link: "https://i.postimg.cc/s2vb1MH2/BATMAN-BEYOND.png" }, { name: "Enigma", link: "https://i.postimg.cc/FK88ShwS/enigma-do-milenio.png" } ] },
+    { name: "Diversos", tags: ["machucado", "zen-oh", "galaxia", "celestial"], variants: [ { name: "Celestial", link: "https://i.postimg.cc/XvptXr13/5.png" }, { name: "Eclypso", link: "https://i.postimg.cc/PqpFTBNf/eclypso.png" }, { name: "True God", link: "https://i.imgur.com/H1XdujI.png" }, { name: "Galáxia", link: "https://i.postimg.cc/HLcPdfjY/galaxia.png" }, { name: "Machucado", link: "https://i.postimg.cc/wvNPcSpH/Machucado.png" }, { name: "Orelha Kaio", link: "https://i.postimg.cc/mkN5KCkS/ORELHA-KAIOSHIN.png" }, { name: "UI Body", link: "https://i.postimg.cc/6Q21tDTd/ui-body.png" }, { name: "Zen-Oh", link: "https://i.postimg.cc/Gp8SdZ9P/ZEN-OH.png" }, { name: "Daishinku", link: "https://i.postimg.cc/xdcBqXpk/daishinku-amarelo.png" } ] }
+];
+
+// ── INIT ──
+window.onload = () => {
+    db.collection("tattoos").orderBy("timestamp", "desc").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            todasTattoosComunidade.push({
+                name: data.name,
+                tags: data.tags || [],
+                variants: [{ name: "Link", link: data.link }],
+                isCommunity: true
+            });
+        });
+        renderizar(dbOficiais, 'oficiaisGrid');
+        renderizar(todasTattoosComunidade, 'comunidadeGrid');
+    }).catch(e => console.error("Erro ao carregar a comunidade", e));
+};
+
+// ── TABS ──
+function setTab(tab, btn) {
+    document.getElementById('searchInput').value = '';
+
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+    document.getElementById('tab-' + tab).classList.add('active');
+    if (btn) btn.classList.add('active');
+
+    tabAtual = tab;
+}
+
+// ── PESQUISA ──
+function pesquisarTattoos() {
+    const termo = document.getElementById('searchInput').value.toLowerCase().trim();
+
+    if (termo === '') {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById('tab-' + tabAtual).classList.add('active');
+        return;
+    }
+
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById('tab-pesquisa').classList.add('active');
+
+    const match = (item) => {
+        const nameMatch = item.name.toLowerCase().includes(termo);
+        const tagMatch = item.tags && item.tags.some(tag => tag.toLowerCase().includes(termo));
+        return nameMatch || tagMatch;
+    };
+
+    const todos = [...dbOficiais.filter(match), ...todasTattoosComunidade.filter(match)];
+    renderizar(todos, 'pesquisaGrid');
+}
+
+// ── TOGGLE COMUNIDADE ──
+function toggleComunidade(el) {
+    el.classList.toggle('open');
+    el.nextElementSibling.classList.toggle('open');
+}
+
+// ── RENDERIZAR ──
+function renderizar(data, containerId) {
+    const grid = document.getElementById(containerId);
+    grid.innerHTML = '';
+
+    if (!data.length) {
+        grid.innerHTML = '<div class="empty-state"><div class="empty-icon">🖋</div><p>Nenhuma tattoo encontrada.</p></div>';
+        return;
+    }
+
+    data.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        let linkAtual = item.variants[0].link;
+
+        let tagsHtml = '';
+        if (item.tags && item.tags.length > 0) {
+            tagsHtml = `<div class="tags-container">` +
+                item.tags.map(t => `<span class="tag-pill">${t}</span>`).join('') +
+                `</div>`;
+        }
+
+        let badge = item.isCommunity ? `<span style="color:var(--muted);font-size:0.7rem;">(Comunidade)</span>` : '';
+
+        card.innerHTML = `
+            <div class="img-container">
+                <img src="${linkAtual}" id="img-${containerId}-${idx}" loading="lazy">
+            </div>
+            <div class="info">
+                <div class="info-header">
+                    <h3>${item.name} ${badge}</h3>
+                    ${tagsHtml}
+                </div>
+                <div class="variants" id="vars-${containerId}-${idx}"></div>
+                <button class="btn-copy" id="copybtn-${containerId}-${idx}" onclick="copy('${linkAtual}')">Copiar Link</button>
+            </div>
+        `;
+        grid.appendChild(card);
+
+        if (item.variants.length > 1) {
+            const firstBtn = document.createElement('button');
+            firstBtn.className = 'variant-btn active';
+            firstBtn.innerText = item.variants[0].name;
+            firstBtn.onclick = () => {
+                document.getElementById(`img-${containerId}-${idx}`).src = item.variants[0].link;
+                document.getElementById(`copybtn-${containerId}-${idx}`).onclick = () => copy(item.variants[0].link);
+                document.querySelectorAll(`#vars-${containerId}-${idx} .variant-btn`).forEach(x => x.classList.remove('active'));
+                firstBtn.classList.add('active');
+            };
+            document.getElementById(`vars-${containerId}-${idx}`).appendChild(firstBtn);
+
+            item.variants.forEach((v, vi) => {
+                if (vi === 0) return;
+                const b = document.createElement('button');
+                b.className = 'variant-btn';
+                b.innerText = v.name;
+                b.onclick = () => {
+                    document.getElementById(`img-${containerId}-${idx}`).src = v.link;
+                    document.getElementById(`copybtn-${containerId}-${idx}`).onclick = () => copy(v.link);
+                    document.querySelectorAll(`#vars-${containerId}-${idx} .variant-btn`).forEach(x => x.classList.remove('active'));
+                    b.classList.add('active');
+                };
+                document.getElementById(`vars-${containerId}-${idx}`).appendChild(b);
+            });
+        }
+    });
+}
+
+// ── TAG INPUT (chips) ──
+function handleTagKey(e) {
+    const input = document.getElementById('tagRealInput');
+    if ((e.key === 'Enter' || e.key === ',') && input.value.trim()) {
+        e.preventDefault();
+        const val = input.value.trim().toLowerCase().replace(/[^a-záàâãéèêíïóôõöúùûüñç\-0-9]/gi, '');
+        adicionarTag(val);
+        input.value = '';
+    }
+    if (e.key === 'Backspace' && !input.value && postTags.length) {
+        removerTag(postTags[postTags.length - 1]);
+    }
+}
+
+function adicionarTag(tag) {
+    if (!tag || postTags.includes(tag) || postTags.length >= 8) return;
+    postTags.push(tag);
+    renderChips();
+}
+
+function addTagSugg(tag) { adicionarTag(tag); }
+
+function removerTag(tag) {
+    postTags = postTags.filter(t => t !== tag);
+    renderChips();
+}
+
+function renderChips() {
+    const wrap = document.getElementById('tagInputWrap');
+    const input = document.getElementById('tagRealInput');
+    wrap.innerHTML = '';
+    postTags.forEach(tag => {
+        const chip = document.createElement('span');
+        chip.className = 'tag-chip';
+        chip.innerHTML = `${tag} <span class="tag-chip-x" onclick="removerTag('${tag}')">×</span>`;
+        wrap.appendChild(chip);
+    });
+    wrap.appendChild(input);
+    input.focus();
+}
+
+// ── FILE ──
+function updateFileName(input) {
+    const label = document.getElementById('fileNameLabel');
+    label.textContent = input.files[0] ? input.files[0].name : 'Escolher arquivo...';
+    label.classList.toggle('selected', !!input.files[0]);
+}
+
+// ── UPLOAD DE IMAGEM ──
+// ImgBB tem CORS 100% liberado — sem proxy, sem gambiarra
+// ⚠️ Se parar de funcionar, gera sua chave grátis em: https://api.imgbb.com/
+const IMGBB_KEY = "299b9faea202e1bb7427cba75c7cd9d8";
+
+async function uploadImagem(file) {
+
+    // Valida tamanho (max 10MB)
+    if (file.size > 10 * 1024 * 1024) {
+        throw new Error("Imagem muito grande. Use uma imagem menor que 10MB.");
+    }
+
+    // Converte o arquivo pra base64
+    const toBase64 = f => new Promise((res, rej) => {
+        const reader = new FileReader();
+        reader.onload = () => res(reader.result.split(',')[1]);
+        reader.onerror = rej;
+        reader.readAsDataURL(f);
+    });
+
+    const b64 = await toBase64(file);
+
+    // 1. ImgBB — CORS nativo, gratuito, permanente
+    try {
+        const fd = new FormData();
+        fd.append("key", IMGBB_KEY);
+        fd.append("image", b64);
+
+        const r = await fetch("https://api.imgbb.com/1/upload", { method: "POST", body: fd });
+        const json = await r.json();
+        if (json.success && json.data?.url) return json.data.url;
+        console.warn("ImgBB erro:", json?.error?.message);
+    } catch (e) { console.warn("ImgBB falhou:", e.message); }
+
+    // 2. Fallback: freeimage.host
+    try {
+        const fd2 = new FormData();
+        fd2.append("key", "6d207e02198a847aa98d0a2a901485a5");
+        fd2.append("action", "upload");
+        fd2.append("source", b64);
+        fd2.append("format", "json");
+
+        const r2 = await fetch("https://freeimage.host/api/1/upload", { method: "POST", body: fd2 });
+        const json2 = await r2.json();
+        if (json2.status_code === 200 && json2.image?.url) return json2.image.url;
+    } catch (e) { console.warn("Freeimage falhou:", e.message); }
+
+    // 3. Último recurso: Catbox direto
+    try {
+        const fd3 = new FormData();
+        fd3.append("reqtype", "fileupload");
+        fd3.append("userhash", "");
+        fd3.append("fileToUpload", file);
+        const r3 = await fetch("https://catbox.moe/user/api.php", { method: "POST", body: fd3 });
+        const t3 = await r3.text();
+        if (t3 && t3.trim().startsWith("https://")) return t3.trim();
+    } catch (e) { console.warn("Catbox falhou:", e.message); }
+
+    throw new Error("Falha no upload. Tente uma imagem menor ou tente novamente.");
+}
+
+async function fazerUpload() {
+    const file = document.getElementById('fileInput').files[0];
+    const name = document.getElementById('userName').value.trim();
+    const status = document.getElementById('status');
+    const btn = document.getElementById('uploadBtn');
+
+    if (!file || !name) return alert("Preencha o nome e escolha a imagem!");
+
+    const inputSolto = document.getElementById('tagRealInput').value.trim();
+    if (inputSolto) adicionarTag(inputSolto.toLowerCase());
+
+    btn.disabled = true;
+    status.style.color = '#888';
+    status.innerText = "⏳ Enviando imagem...";
+
+    try {
+        const urlFinal = await uploadImagem(file);
+
+        status.innerText = "⏳ Salvando no banco de dados...";
+
+        await db.collection("tattoos").add({
+            name: name,
+            link: urlFinal,
+            tags: postTags.length ? postTags : ['custom'],
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        todasTattoosComunidade.unshift({
+            name: name,
+            tags: postTags.length ? [...postTags] : ['custom'],
+            variants: [{ name: "Link", link: urlFinal }],
+            isCommunity: true
+        });
+        renderizar(todasTattoosComunidade, 'comunidadeGrid');
+
+        status.style.color = "#22dd66";
+        status.innerText = "✓ Publicado com sucesso! Redirecionando...";
+
+        setTimeout(() => {
+            document.getElementById('userName').value = '';
+            document.getElementById('tagRealInput').value = '';
+            document.getElementById('fileInput').value = '';
+            updateFileName(document.getElementById('fileInput'));
+            postTags = [];
+            renderChips();
+
+            setTab('comunidade', document.querySelectorAll('.nav-btn')[1]);
+            document.querySelector('.community-toggle').classList.add('open');
+            document.querySelector('.community-grid-wrapper').classList.add('open');
+
+            btn.disabled = false;
+            status.innerText = '';
+        }, 1800);
+
+    } catch (e) {
+        btn.disabled = false;
+        status.style.color = "#ff4444";
+        status.innerText = `✗ Erro: ${e.message}`;
+    }
+}
+
+
+// ── SUGESTÕES ──
+const WEBHOOK_URL = 'https://discord.com/api/webhooks/1482856157490970825/NDLOcMJwuUvuafKjuqwlXghpt7iunfKBbbhWuqRxxzhQYtXjO8VsywyX8XkZ1SJ2rNEi';
+let tipoSelecionado = 'Nova Tattoo';
+
+function selecionarTipo(btn, tipo) {
+    document.querySelectorAll('.tipo-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    tipoSelecionado = tipo;
+}
+
+// ── SUGESTÕES — WEBHOOK DISCORD ──
+async function enviarSugestao() {
+    const texto   = document.getElementById('sugestaoTexto').value.trim();
+    const discord = document.getElementById('sugestaoDiscord').value.trim();
+    const status  = document.getElementById('sugestaoStatus');
+    const btn     = document.getElementById('btnSugestao');
+
+    if (!texto) {
+        status.style.color = '#ff4444';
+        status.innerText = '✗ Escreve a sugestão antes de enviar!';
+        return;
+    }
+
+    btn.disabled = true;
+    status.style.color = '#888';
+    status.innerText = '⏳ Enviando...';
+
+    const autor = discord ? `@${discord}` : '`Anônimo`';
+
+    const payload = {
+        embeds: [{
+            title: `💬 Nova Sugestão — ${tipoSelecionado}`,
+            description: texto,
+            color: 0xe8000d,
+            fields: [
+                { name: '👤 Discord', value: autor, inline: true },
+                { name: '📂 Tipo', value: tipoSelecionado, inline: true }
+            ],
+            footer: { text: 'BlackDz Tattoos — Sistema de Sugestões' },
+            timestamp: new Date().toISOString()
+        }]
+    };
+
+    try {
+        const res = await fetch('https://discord.com/api/webhooks/1482856157490970825/NDLOcMJwuUvuafKjuqwlXghpt7iunfKBbbhWuqRxxzhQYtXjO8VsywyX8XkZ1SJ2rNEi', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (res.ok || res.status === 204) {
+            status.style.color = '#22dd66';
+            status.innerText = '✓ Sugestão enviada! Obrigado 🖤';
+            document.getElementById('sugestaoTexto').value = '';
+            document.getElementById('sugestaoDiscord').value = '';
+            tipoSelecionado = 'Nova Tattoo';
+            document.querySelectorAll('.tipo-btn').forEach((b, i) => b.classList.toggle('selected', i === 0));
+            setTimeout(() => { status.innerText = ''; btn.disabled = false; }, 3000);
+        } else {
+            throw new Error(`Status ${res.status}`);
+        }
+    } catch (e) {
+        status.style.color = '#ff4444';
+        status.innerText = '✗ Erro ao enviar. Tenta novamente.';
+        btn.disabled = false;
+    }
+}
+
+// ── COPY ──
+function copy(t) {
+    const toast = document.getElementById('toast');
+
+    // Tenta Clipboard API (HTTPS/localhost)
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(() => {
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 2000);
+        }).catch(() => fallbackCopy(t));
+    } else {
+        fallbackCopy(t);
+    }
+
+    function fallbackCopy(text) {
+        const el = document.createElement('textarea');
+        el.value = text;
+        el.style.position = 'fixed';
+        el.style.opacity = '0';
+        document.body.appendChild(el);
+        el.focus();
+        el.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(el);
+        if (ok) {
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 2000);
+        } else {
+            alert('Não foi possível copiar automaticamente.\nLink: ' + text);
+        }
+    }
+}
+</script>
+</body>
+</html>
